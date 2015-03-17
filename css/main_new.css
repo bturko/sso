@@ -67,7 +67,7 @@ Icon classes can be used entirely standalone. They are named after their origina
 ```
 */
 .iconks-btn-checked-icon, .btn-select.checked:before {
-  background-image: url(../images/sprite-all.png);
+  background-image: url(images/sprite-all.png);
   background-position: 0px 0px;
   width: 8px;
   height: 8px;

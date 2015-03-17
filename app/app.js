@@ -41,7 +41,11 @@ ssoApp.controller('mainController', function($scope) {
     $scope.toggleLogin = false;
     $scope.toggleExist = false;
     $scope.toggleSMS = false;
+    $scope.toggleSMS2 = false;
     $scope.togglePassword = false;
+    $scope.show_password = true;
+    $scope.show_regBtn = true;
+    $scope.toggleWrongCode = false;
 
     $scope.userLogin = 'bob';
     $scope.userPassword = '';
@@ -51,8 +55,12 @@ ssoApp.controller('mainController', function($scope) {
         this.userLogin = '';
         this.userPassword = '';
         this.toggleSMS = false;
+        this.toggleSMS2 = false;
+        $scope.show_password = true;
+        $scope.show_regBtn = true;
         $("#user-login").attr("placeholder", this.userLogin)
         $("#user-password").attr("placeholder", this.userPassword)
+        $("#user-login").attr("disabled", "");
     };
 
     $scope.register = function(){
@@ -65,8 +73,20 @@ ssoApp.controller('mainController', function($scope) {
             }
             else{
                 $scope.toggleSMS = true;
+                $scope.show_password = false;
+                $scope.show_regBtn = false;
+                $("#user-login").attr("disabled", "disabled");
             }
         }
+        if(toggleSMS2==true){
+            
+        }
+    }
+
+    $scope.get_code = function () {
+        this.toggleSMS = false;
+        this.toggleSMS2 = true;
+        this.show_regBtn = true;
     }
 });
 

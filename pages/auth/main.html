@@ -11,10 +11,16 @@
                 <input type="text" name="user-login" id="user-login" class="input-info" ng-model="userLogin" placeholder="+380671234567"/>
                 <div style="width:20px; height: 20px; background: red" ng-click="toggleHelp = !toggleHelp" ></div>
                 <div ng-show="toggleSMS"><p class="text-left">З міркувань безпеки ми відправимо безкоштовне SMS-повідомлення із кодом
-                    підтвердження на вказанний мобільний телефон</p><input class="connect" type="submit" value="Отримати код"/></div>
+                    підтвердження на вказанний мобільний телефон</p>
+                    <input class="connect" type="button" value="Отримати код" ng-click="get_code()" />
+                </div>
+                <div ng-show="toggleSMS2">
+                    <p class="text-left">На ваш номер телефону {{userLogin}} було надiслано повiдомлення iз кодом пiдтвердження. Введiть отриманий код у поле нижче.</p>
+                    <input type="password" name="user-sms-code" id="user-sms-code" class="input-locked">
+                </div>
                 <a class="help_link pull-right" href="#">Отримати одноразовий пароль</a>
                 <input type="password" name="user-password" id="user-password" class="input-locked" ng-model="userPassword"
-                       placeholder="Ваш пароль"/>
+                       ng-show="show_password" placeholder="Ваш пароль"/>
                 <div class="block m-bottom-10 clearfix">
                     <input type="checkbox" name="checkbox6" id="checkbox6"/>
                     <label class="text-left" for="checkbox6">Запам'ятати мене</label>
@@ -23,7 +29,7 @@
 
                 <div class="submit-block text-center" ><!--ng-controller="mainController"-->
                     <a id="reset_all" ng-click="resetAll();">Скасувати?</a>
-                    <input class="connect" type="button" value="Зарееструватися" ng-click="register()" />
+                    <input class="connect" type="button" value="Зарееструватися" ng-click="register()" ng-show="show_regBtn" />
                 </div>
             </form>
 
@@ -74,6 +80,14 @@
                         <a href="#">Вхід</a>
                     </p>
                     <a class="popup_close" ng-click="toggleExist = false">X</a>
+                </div>
+                <div class="register-popup popup-alert info box on" ng-show="toggleWrongCode" ng-animate="'box'">
+                    <h5>Невiрний код пiдтвердження!</h5>
+                    <p>
+                        Спробуйте ще раз. Кiлькiсть спроб обмежена!
+                        <a href="#">Вхід</a>
+                    </p>
+                    <a class="popup_close" ng-click="toggleWrongCode = false">X</a>
                 </div>
             </div>
 
