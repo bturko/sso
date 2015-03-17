@@ -8,12 +8,12 @@
 
             <img class="m-top-20 m-bottom-20" src="images/icon-register-user.png" alt="User"/>
             <form action="#" class="form_register_full m-auto text-center kyivstar-form form_internet">
-                <input type="text" name="name" id="name12" class="input-info" placeholder="+380676171819"/>
-                <span ng-click="toggleHelp = !toggleHelp" />?</span>
+                <input type="text" name="user-login" id="user-login" class="input-info" ng-model="userLogin" placeholder="+380671234567"/>
+                <div style="width:20px; height: 20px; background: red" ng-click="toggleHelp = !toggleHelp" ></div>
                 <div ng-show="toggleSMS"><p class="text-left">З міркувань безпеки ми відправимо безкоштовне SMS-повідомлення із кодом
                     підтвердження на вказанний мобільний телефон</p><input class="connect" type="submit" value="Отримати код"/></div>
                 <a class="help_link pull-right" href="#">Отримати одноразовий пароль</a>
-                <input type="password" name="password" id="password3" class="input-locked"
+                <input type="password" name="user-password" id="user-password" class="input-locked" ng-model="userPassword"
                        placeholder="Ваш пароль"/>
                 <div class="block m-bottom-10 clearfix">
                     <input type="checkbox" name="checkbox6" id="checkbox6"/>
@@ -21,13 +21,13 @@
                 </div>
 
 
-                <div class="submit-block text-center">
-                    <a href="#">Скасувати?</a>
+                <div class="submit-block text-center" ng-controller="mainController">
+                    <a id="reset_all" ng-click="resetAll();">Скасувати?</a>
                     <input class="connect" type="submit" value="Зарееструватися"/>
                 </div>
             </form>
 
-            <div class="m-auto">
+            <div class="m-auto" ng-show="showSocials">
                 <h4 class="m-top-25">Зв'язок с соціальними мережами</h4>
 
                 <p>Ви можете увійти за допомогою облікових записів соціальніх мереж</p>

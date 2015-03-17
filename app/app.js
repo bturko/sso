@@ -16,7 +16,7 @@ ssoApp.config(function($routeProvider) {
         })
 
         .when('/registration', {
-            templateUrl : 'pages/register/register.html',
+            templateUrl : 'pages/register/main.html',
             controller  : 'mainController'
         })
 
@@ -37,11 +37,20 @@ ssoApp.config(function($routeProvider) {
 });
 
 ssoApp.controller('mainController', function($scope) {
-    //$scope.message = 'Everyone come and see how good I look!';
     $scope.toggleHelp = false;
     $scope.toggleLogin = false;
     $scope.toggleExist = false;
     $scope.toggleSMS = false;
+    $scope.userLogin = 'bob';
+    $scope.userPassword = '';
+    $scope.showSocials = true;
+
+    $scope.resetAll = function () {
+        this.userLogin = '';
+        this.userPassword = '';
+        $("#user-login").attr("placeholder", this.userLogin)
+        $("#user-password").attr("placeholder", this.userPassword)
+    };
 });
 
 ssoApp.controller('aboutController', function($scope) {
