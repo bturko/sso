@@ -113,10 +113,20 @@ ssoApp.controller('mainController', function($scope) {
     }
 });
 
-ssoApp.controller('aboutController', function($scope) {
-    //$scope.message = 'Look! I am an about page.';
+ssoApp.controller('registerController', function($scope) {
+    $scope.showSuccessMsg = false;
+    $scope.showHelpPopup = false;
+    $scope.showWrongLogin = false;
+    $scope.showSMSBlock = false;
+    $scope.regLogin = "+380";
+
+    $scope.register_newUser = function(){
+       if($scope.regLogin==""){
+            $scope.showWrongLogin = true;
+        }
+    }
 });
 
 ssoApp.controller('contactController', function($scope) {
-    //$scope.message = 'Contact us! JK. This is just a demo.';
+
 });
