@@ -41,6 +41,8 @@ ssoApp.controller('mainController', function($scope) {
     $scope.toggleLogin = false;
     $scope.toggleExist = false;
     $scope.toggleSMS = false;
+    $scope.togglePassword = false;
+
     $scope.userLogin = 'bob';
     $scope.userPassword = '';
     $scope.showSocials = true;
@@ -48,9 +50,24 @@ ssoApp.controller('mainController', function($scope) {
     $scope.resetAll = function () {
         this.userLogin = '';
         this.userPassword = '';
+        this.toggleSMS = false;
         $("#user-login").attr("placeholder", this.userLogin)
         $("#user-password").attr("placeholder", this.userPassword)
     };
+
+    $scope.register = function(){
+        if($scope.userLogin.length < 6){
+            $scope.toggleLogin = true;
+        }
+        else{
+            if($scope.userPassword==""){
+                $scope.togglePassword = true;
+            }
+            else{
+                $scope.toggleSMS = true;
+            }
+        }
+    }
 });
 
 ssoApp.controller('aboutController', function($scope) {
