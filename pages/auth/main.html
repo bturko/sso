@@ -16,7 +16,7 @@
                 </div>
                 <div ng-show="toggleSMS2">
                     <p class="text-left">На ваш номер телефону {{userLogin}} було надiслано повiдомлення iз кодом пiдтвердження. Введiть отриманий код у поле нижче.</p>
-                    <input type="password" name="user-sms-code" id="user-sms-code" class="input-locked">
+                    <input type="password" name="user-sms-code" id="user-sms-code" class="input-locked" ng-model="userSmsCode" placeholder="Код пiдтвердження з СМС-повiдомлення">
                 </div>
                 <a class="help_link pull-right" href="#">Отримати одноразовий пароль</a>
                 <input type="password" name="user-password" id="user-password" class="input-locked" ng-model="userPassword"
@@ -31,7 +31,33 @@
                     <a id="reset_all" ng-click="resetAll();">Скасувати?</a>
                     <input class="connect" type="button" value="Зарееструватися" ng-click="register()" ng-show="show_regBtn" />
                 </div>
+
+                <div class="submit-block text-center" ng-show="showCodeProblemLink">
+                    <a class="help_link clearfix pull-left" ng-click="showCodeProblemBlock = true">Виникли проблеми з кодом?</a>
+                </div>
             </form>
+
+            <div ng-show="showCodeProblemBlock">
+                <h5 class="m-top-25 m-bottom-20">Спробуйте один з альтернативних способів нижче</h5>
+
+                <form action="#" class="form_register_full text-center kyivstar-form form_internet">
+                    <div class="block m-bottom-10 clearfix">
+                        <input type="checkbox" name="checkbox8" id="checkbox8"/>
+                        <label class="text-left" for="checkbox8">Надіслати тестове повідомлення ще раз</label>
+                    </div>
+                    <div class="block m-bottom-10 clearfix">
+                        <input type="checkbox" name="checkbox9" id="checkbox9"/>
+                        <label class="text-left" for="checkbox9">Вікористати PUK-2 вашої сім-картки</label>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="submit-block text-center">
+                        <input class="connect" type="button" ng-click="helpWithCode()" value="Скористатися цим способом"/>
+                    </div>
+
+                </form>
+            </div>
+
 
             <div class="m-auto" ng-show="showSocials">
                 <h4 class="m-top-25">Зв'язок с соціальними мережами</h4>
@@ -88,6 +114,13 @@
                         <a href="#">Вхід</a>
                     </p>
                     <a class="popup_close" ng-click="toggleWrongCode = false">X</a>
+                </div>
+                <div class="register-popup success info box on" ng-show="showSuccessCreating" ng-animate="'box'">
+                    <h5>Обліковій запис для {{userLogin}} успішно створено</h5>
+                    <p>
+                        На вказану Вами адресу електроної пошти було надіслано лист, який містить інструкції з активації. Після активаціі для входу на портал використовуйте адресу  електоної пошти та пароль.
+                    </p>
+                    <a class="popup_close" ng-click="showSuccessCreating = false">X</a>
                 </div>
             </div>
 
