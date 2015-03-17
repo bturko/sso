@@ -1,0 +1,14 @@
+@import "kyivstar_variables";
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+@mixin font-size($size, $important:"") {
+  font-size: $size unquote($important);
+  font-size: calculateRem($size) unquote($important);
+}
+@mixin l-height($size) {
+  line-height: $size;
+  line-height: calculateRem($size);
+}

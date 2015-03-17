@@ -5,17 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kyivstar main</title>
-    <link href="../css/application.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/aui.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/base.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/custom_common.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/custom_responsive.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/dockbar.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/extras.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/layout.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/main.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/navigation.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/portlet.css" rel="stylesheet" type="text/css"/>
     <link href="../css/main_new.css" rel="stylesheet" type="text/css"/>
     <!--[if lt IE 9]>
     <script>
@@ -34,6 +23,7 @@
 <div class="index_main kyivstar">
 
 <!--SECTION REGISTRATION SIGNUP START-->
+<!--
 <h6 style="font-size: 23px;color: #000; text-align: center;margin: 25px 0 0 0;">SIGNUP</h6>
 <section>
     <div class="block-white-wrap m-top-25 table">
@@ -91,7 +81,16 @@
 <!--SECTION REGISTRATION SIGNUP END-->
 
 
+
+
+
+
+
+
+
+
 <!--SECTION REGISTRATION SIGNUP HELP START-->
+<!--
 <h6 style="font-size: 23px;color: #000; text-align: center;margin: 25px 0 0 0;">SIGNUP HELP</h6>
 <section>
     <div class="block-white-wrap m-top-25 table">
@@ -151,6 +150,7 @@
 
 
 <!--SECTION REGISTRATION SIGNUP ERROR START-->
+<!--
 <h6 style="font-size: 23px;color: #000; text-align: center;margin: 25px 0 0 0;">SIGNUP ERROR</h6>
 <section>
     <div class="block-white-wrap m-top-25 table">
@@ -210,6 +210,7 @@
 
 
 <!--SECTION REGISTRATION SIGNUP MSISDN START-->
+<!--
 <h6 style="font-size: 23px;color: #000; text-align: center;margin: 25px 0 0 0;">SIGNUP MSISDN </h6>
 <section>
     <div class="block-white-wrap m-top-25 table">
@@ -263,6 +264,7 @@
 
 
 <!--SECTION REGISTRATION SIGNUP MSISDN-OTP START-->
+<!--
 <h6 style="font-size: 23px;color: #000; text-align: center;margin: 25px 0 0 0;">SIGNUP MSISDN-OTP </h6>
 <section>
     <div class="block-white-wrap m-top-25 table">
@@ -317,12 +319,32 @@
 <!--SECTION REGISTRATION SIGNUP MSISDN-OTP END-->
 
 
+
+
+
+
+
+
+
+
+
+
+
 <!--SECTION REGISTRATION SIGNUP MSISDN-OTP-PROBLEM START-->
 <h6 style="font-size: 23px;color: #000; text-align: center;margin: 25px 0 0 0;">SIGNUP MSISDN-OTP-PROBLEM </h6>
 <section>
     <div class="block-white-wrap m-top-25 table">
         <div class="register_main_block_w50 padding-60">
             <h1 class="">Рєєстрація</h1>
+
+            <div class="register-popup success">
+                <h5>Обліковій запис для Vlasislav.Tserman@kyivsar.net успішно створено</h5>
+                <p>
+                    На вказану Вами адресу електроної пошти було надіслано лист, який містить інструкції з активації. Після активаціі для входу на портал використовуйте адресу  електоної пошти та пароль.
+                </p>
+                <a class="popup_close" href="#">X</a>
+            </div>
+
 
             <form action="#" class="form_register_full m-top-25 text-center kyivstar-form">
                 <input type="text" disabled="disabled" name="name" class="input-info input-disabled" id="name22"
@@ -331,6 +353,9 @@
                     підтвердження. Введіть отриманний код в поле нижче</label>
                 <input type="text" name="name" id="name5" class="input-locked"
                        placeholder="Код підтвердження з SMS-повідомлення"/>
+
+                <input type="text" name="name" id="name2" class="input-warning" placeholder="Електронна пошта або номер мобильного">
+
                 <div class="submit-block text-center">
                     <a href="#" class="pull-left m-top-15">Скасувати?</a>
                     <input class="connect" type="submit" value="Зарееструватися"/>
@@ -363,15 +388,54 @@
         </div>
 
         <div class="register_additional_block_w50 padding-60 text-center">
-            <img class="m-top-80" src="../images/icon-register-phone.jpg" alt="Phone"/>
+
+            <div class="register-popup info">
+                <h5>Довідка!</h5>
+                <p>
+                    В якості логіна може використовуватися номер мобільного телефону або адрес електроної пошти
+                </p>
+                <a class="popup_close" href="#">X</a>
+            </div>
+
+            <div class="register-popup popup-alert">
+                <h5>Невірний формат логіна!</h5>
+                <p>
+                    В якості логіна може використовуватися номер мобільного телефону або адрес електроної пошти
+                </p>
+                <a class="popup_close" href="#">X</a>
+            </div>
+
+            <h2 class=" m-top-105">Чому потрібно рєєструватися?</h2>
+            <ol class="list-register">
+                <li>
+                    <p>Ви отримаете доступ до усіх сайтів Київстар</p>
+                </li>
+                <li>
+                    <p>Ви отримаєте можливість переглядати персональну інформацію</p>
+                </li>
+                <li>
+                    <p>Ще багато цікавішого...</p>
+                </li>
+            </ol>
+
         </div>
     </div>
 </section>
 <!--SECTION REGISTRATION SIGNUP MSISDN-OTP-PROBLEM END-->
 
 
+
+
+
+
+
+
+
+
+
+
 <!--SECTION REGISTRATION SIGNUP MSISDN-PUK2 START-->
-<h6 style="font-size: 23px;color: #000; text-align: center;margin: 25px 0 0 0;">SIGNUP MSISDN-PUK2 </h6>
+<!--<h6 style="font-size: 23px;color: #000; text-align: center;margin: 25px 0 0 0;">SIGNUP MSISDN-PUK2 </h6>
 <section>
     <div class="block-white-wrap m-top-25 table">
         <div class="register_main_block_w50 padding-60">
@@ -518,18 +582,28 @@
 <section>
     <div class="block-white-wrap m-top-25 table text-center">
         <div class="authorize_main_block padding-60">
-
             <img class="m-top-20 m-bottom-20" src="../images/icon-register-user.png" alt="User"/>
-
             <h1 class=" ">Привіт, Владислав!</h1>
-
         </div>
     </div>
 </section>
 <!--SECTION REGISTRATION AUTH SUCCESS END-->
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 <!--SECTION SIGNUP EMAIL SIGNUP START-->
+<!--
 <h6 style="font-size: 23px;color: #000; text-align: center;margin: 25px 0 0 0;">EMAIL SIGNUP</h6>
 <section>
     <div class="block-white-wrap m-top-25 table">
@@ -580,6 +654,7 @@
 
 
 <!--SECTION SIGNUP EMAIL SIGNUP ERROR START-->
+<!--
 <h6 style="font-size: 23px;color: #000; text-align: center;margin: 25px 0 0 0;">EMAIL SIGNUP ERROR</h6>
 <section>
     <div class="block-white-wrap m-top-25 table">
@@ -639,6 +714,7 @@
 
 
 <!--SECTION SIGNUP EMAIL SIGNUP 2 START-->
+<!--
 <h6 style="font-size: 23px;color: #000; text-align: center;margin: 25px 0 0 0;">EMAIL SIGNUP 2</h6>
 <section>
     <div class="block-white-wrap m-top-25 table">
@@ -694,6 +770,7 @@
 
 
 <!--SECTION SIGNUP EMAIL SIGNUP 3 SUCCESS START-->
+<!--
 <h6 style="font-size: 23px;color: #000; text-align: center;margin: 25px 0 0 0;">EMAIL SUCCESS 3</h6>
 <section>
     <div class="block-white-wrap m-top-25 table">
@@ -759,7 +836,7 @@
 <!-- /index_main kyivstar -->
 
 
-<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../vendor/jquery-1.11.1.min.js"></script>
 <script>
     $.noConflict();
     jQuery(document).ready(function ($) {

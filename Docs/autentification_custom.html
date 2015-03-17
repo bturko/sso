@@ -5,17 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kyivstar main</title>
-    <link href="../css/application.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/aui.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/base.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/custom_common.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/custom_responsive.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/dockbar.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/extras.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/layout.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/main.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/navigation.css" rel="stylesheet" type="text/css"/>
-    <link href="../css/portlet.css" rel="stylesheet" type="text/css"/>
     <link href="../css/main_new.css" rel="stylesheet" type="text/css"/>
     <!--[if lt IE 9]>
     <script>
@@ -42,26 +31,47 @@
 
             <h1>Аутентифікація</h1>
 
-            <img class="m-top-20 m-bottom-20" src="../images/icon-register-user.png" alt="User"/>
+            <img class="m-top-20 m-bottom-20" src="../images/icon-register-user.png" id="User" alt="User"/>
             <form action="#" class="form_register_full m-auto text-center kyivstar-form form_internet">
-                <input type="text" name="name" id="name12" placeholder="+380676171819"/>
-                <div><label class="text-left">З міркувань безпеки ми відправимо безкоштовне SMS-повідомлення із кодом
-                    підтвердження на вказанний мобільний телефон</label><input class="connect" type="submit" value="Отримати код"/></div>
-
-                <a class="help_link pull-right" href="#">Отримати одноразовий пароль</a>
+                <input type="text" name="name" id="name12" placeholder="+380676171819" class="input-info"/>
+                <p class="text-left">З міркувань безпеки ми відправимо безкоштовне SMS-повідомлення із кодом
+                    підтвердження на вказанний мобільний телефон</p>
                 <input type="password" name="password" id="password3" class="input-locked"
                        placeholder="Ваш пароль"/>
                 <div class="block m-bottom-10 clearfix">
-                    <input type="checkbox" name="checkbox6" id="checkbox6"/>
-                    <label class="text-left" for="checkbox6">Запам'ятати мене</label>
+                    <input type="checkbox" name="checkbox7" id="checkbox7"/>
+                    <label class="text-left" for="checkbox7">Запам'ятати мене</label>
                 </div>
-
 
                 <div class="submit-block text-center">
-                    <!--<a href="#">Скасувати?</a>-->
+                    <a href="#">Скасувати?</a>
                     <input class="connect" type="submit" value="Зарееструватися"/>
                 </div>
+
+                <div class="submit-block text-center">
+                    <a class="help_link clearfix pull-left" href="#">Виникли проблеми з кодом?</a>
+                </div>
             </form>
+
+            <h5 class="m-top-25 m-bottom-20">Спробуйте один з альтернативних способів нижче</h5>
+
+            <form action="#" class="form_register_full text-center kyivstar-form form_internet">
+                <div class="block m-bottom-10 clearfix">
+                    <input type="checkbox" name="checkbox8" id="checkbox8"/>
+                    <label class="text-left" for="checkbox8">Надіслати тестове повідомлення ще раз</label>
+                </div>
+                <div class="block m-bottom-10 clearfix">
+                    <input type="checkbox" name="checkbox9" id="checkbox9"/>
+                    <label class="text-left" for="checkbox9">Вікористати PUK-2 вашої сім-картки</label>
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="submit-block text-center">
+                    <input class="connect" type="submit" value="Скористатися цим способом"/>
+                </div>
+
+            </form>
+
 
             <div class="m-auto">
                 <h4 class="m-top-25">Зв'язок с соціальними мережами</h4>
@@ -77,12 +87,11 @@
 
             </div>
 
+
         </div>
 
 
         <div class="register_additional_block_w50 padding-60 text-center" id="right-block-authorize">
-
-            <img class="m-top-90" src="../images/icon-register-phone.jpg" alt="Phone">
 
             <div class="register-popup info">
                 <h5>Довідка!</h5>
@@ -91,6 +100,23 @@
                 </p>
                 <a class="popup_close" href="#">X</a>
             </div>
+
+            <div class="register-popup success">
+                <h5>Обліковій запис для Vlasislav.Tserman@kyivsar.net успішно створено</h5>
+                <p>
+                    На вказану Вами адресу електроної пошти було надіслано лист, який містить інструкції з активації. Після активаціі для входу на портал використовуйте адресу  електоної пошти та пароль.
+                </p>
+                <a class="popup_close" href="#">X</a>
+            </div>
+
+            <div class="register-popup popup-alert">
+                <h5>Невірний формат логіна!</h5>
+                <p>
+                    В якості логіна може використовуватися номер мобільного телефону або адрес електроної пошти
+                </p>
+                <a class="popup_close" href="#">X</a>
+            </div>
+
         </div>
 
     </div>
@@ -99,6 +125,7 @@
 
 
 <!--SECTION REGISTRATION SIGNUP START-->
+    <!--
 <section>
     <div class="block-white-wrap m-top-25 table">
         <div class="register_main_block_w50 padding-60 text-center">
@@ -165,8 +192,6 @@
 
         <div class="register_additional_block_w50 padding-60 text-center">
 
-            <img class="m-top-90" src="../images/icon-register-phone.jpg" alt="Phone">
-
             <div class="register-popup info">
                 <h5>Довідка!</h5>
                 <p>
@@ -184,7 +209,7 @@
 <!-- /index_main kyivstar -->
 
 
-<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../vendor/jquery-1.11.1.min.js"></script>
 <script>
     $.noConflict();
     jQuery(document).ready(function ($) {

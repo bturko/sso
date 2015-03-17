@@ -1,2 +1,5 @@
 # Created by .gitignore support plugin (hsz.mobi)
 .idea
+/node_modules
+/.sass-cache
+/css/partials
