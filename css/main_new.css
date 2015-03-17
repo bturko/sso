@@ -228,12 +228,13 @@ body,
 .kyivstar .kyivstar-form .input-wrapper {
   position: relative;
 }
-.kyivstar .kyivstar-form .input-wrapper input + img {
+.kyivstar .kyivstar-form .input-wrapper input + .input-img {
   position: absolute;
   cursor: pointer;
   right: 0;
   top: 11px;
   bottom: 0;
+  display: inline-block;
 }
 .kyivstar .kyivstar-form input {
   font-family: 'MuseoSansCyrl-300';
@@ -1788,6 +1789,21 @@ p {
   display: inline-block;
   margin: 0;
   width: 95%;
+}
+.kyivstar .form_register_full .info-img {
+  background: url("../images/icon-register-question.png") scroll no-repeat 100% 50% !important;
+  width: 17px;
+  height: 15px;
+}
+.kyivstar .form_register_full .locked-img {
+  background: url("../images/icon-register_key.png") scroll no-repeat 100% 50% !important;
+  width: 16px;
+  height: 15px;
+}
+.kyivstar .form_register_full .warning-img {
+  background: url("../images/icon-register_warning.png") scroll no-repeat 100% 50% !important;
+  width: 20px;
+  height: 18px;
 }
 .kyivstar .form_register_full .input-warning {
   border: solid #b25a58 !important;

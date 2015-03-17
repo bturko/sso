@@ -147,13 +147,14 @@ body,
   .input-wrapper
   {
     position: relative;
-    input + img
+    input + .input-img
     {
       position: absolute;
       cursor: pointer;
       right: 0;
       top: 11px;
       bottom: 0;
+      display: inline-block;
     }
   }
   input {

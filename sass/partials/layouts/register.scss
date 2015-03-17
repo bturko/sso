@@ -191,13 +191,23 @@
     }
   }
 
-  .input-info
+  .info-img
   {
-      //background: url("../images/icon-register-question.png")scroll no-repeat 100% 50% !important;
+      background: url("../images/icon-register-question.png")scroll no-repeat 100% 50% !important;
+    width: 17px;
+    height: 15px;
   }
-  .input-locked
+  .locked-img
   {
-      //background: url("../images/icon-register_key.png")scroll no-repeat 100% 50% !important;
+     background: url("../images/icon-register_key.png")scroll no-repeat 100% 50% !important;
+    width: 16px;
+    height: 15px;
+  }
+  .warning-img
+  {
+     background: url("../images/icon-register_warning.png")scroll no-repeat 100% 50% !important;
+    width: 20px;
+    height: 18px;
   }
   .input-warning
   {
