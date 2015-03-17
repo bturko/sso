@@ -24,7 +24,6 @@
 
 
 <!--SECTION REGISTRATION AUTH START-->
-<h6 style="font-size: 23px;color: #000; text-align: center;margin: 25px 0 0 0;">AUTH</h6>
 <section>
     <div class="block-white-wrap m-top-25 table text-center relative">
         <div class="authorize_main_block padding-60" id="left-block-authorize">
@@ -35,7 +34,7 @@
             <form action="#" class="form_register_full m-auto text-center kyivstar-form form_internet">
                 <div class="input-wrapper">
                     <input type="text" name="name" id="name12" placeholder="+380676171819"/>
-                    <img src="../images/icon-register-question.png" alt="Info"/>
+                    <div class="input-img info-img"></div>
                 </div>
                 <p class="text-left">З міркувань безпеки ми відправимо безкоштовне SMS-повідомлення із кодом
                     підтвердження на вказанний мобільний телефон</p>
@@ -43,7 +42,13 @@
                 <div class="input-wrapper">
                 <input type="password" name="password" id="password3" class="input-locked"
                        placeholder="Ваш пароль"/>
-                    <img src="../images/icon-register_key.png" alt="Info"/>
+                    <div class="input-img locked-img"></div>
+                </div>
+
+                <div class="input-wrapper">
+                <input type="password" name="password" id="password3" class="input-locked"
+                       placeholder="Ваш пароль"/>
+                    <div class="input-img warning-img"></div>
                 </div>
                 <div class="block m-bottom-10 clearfix">
                     <input type="checkbox" name="checkbox7" id="checkbox7"/>
@@ -51,7 +56,7 @@
                 </div>
 
                 <div class="submit-block text-center">
-                    <input class="connect" type="submit" value="Зарееструватися"/>
+                    <input class="connect" type="button" value="Зарееструватися"/>
                     <a href="#">Скасувати?</a>
                 </div>
 
@@ -63,13 +68,13 @@
             <h5 class="m-top-25 m-bottom-20">Спробуйте один з альтернативних способів нижче</h5>
 
             <form action="#" class="form_register_full text-center kyivstar-form form_internet">
-                <div class="block m-bottom-10 clearfix">
-                    <input type="checkbox" name="checkbox8" id="checkbox8"/>
-                    <label class="text-left" for="checkbox8">Надіслати тестове повідомлення ще раз</label>
+                <div class="block m-bottom-10 text-left clearfix">
+                    <input name="radio" type="radio" value="radio">
+                    <label>Надіслати тестове повідомлення ще раз</label>
                 </div>
-                <div class="block m-bottom-10 clearfix">
-                    <input type="checkbox" name="checkbox9" id="checkbox9"/>
-                    <label class="text-left" for="checkbox9">Вікористати PUK-2 вашої сім-картки</label>
+                <div class="block m-bottom-10 text-left  clearfix">
+                    <input name="radio" type="radio" value="radio">
+                    <label>Вікористати PUK-2 вашої сім-картки</label>
                 </div>
 
                 <div class="clearfix"></div>

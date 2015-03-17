@@ -1265,6 +1265,7 @@ html {
 body,
 .aui body {
     background: none repeat scroll 0 0 #eceef0;
+  background: none repeat scroll 0 0 #229fff;
 }
 
 /*LIFERAY FIX START*/
@@ -1360,6 +1361,7 @@ body,
     /* Firefox 19+ */
     /* Firefox 18- */
 }
+  display: inline-block;
 .kyivstar .kyivstar-form input {
     font-family: 'MuseoSansCyrl-300';
     color: #3b4952;
@@ -1537,7 +1539,8 @@ body,
     color: #3b4952;
     outline: none;
 }
-.kyivstar .kyivstar-form input[type="submit"] {
+.kyivstar .kyivstar-form input[type="submit"],
+.kyivstar .kyivstar-form input[type="button"] {
     width: auto;
     font-size: 16px;
     font-size: 1rem;
@@ -1553,7 +1556,8 @@ body,
     behavior: url(../pie/PIE.htc);
     cursor: pointer;
 }
-.kyivstar .kyivstar-form input[type="submit"]:focus {
+.kyivstar .kyivstar-form input[type="submit"]:focus,
+.kyivstar .kyivstar-form input[type="button"]:focus {
     outline: none;
     border: 0px;
 }
@@ -2816,7 +2820,8 @@ p {
     color: #a1a6aa !important;
 }
 
-.connect, .kyivstar .kyivstar-form input[type="submit"], .connect-big, .connect-absolute-bottom, .btn-connect {
+.connect, .kyivstar .kyivstar-form input[type="submit"],
+.kyivstar .kyivstar-form input[type="button"], .connect-big, .connect-absolute-bottom, .btn-connect {
     background-color: #FDD923;
     color: #3b4952;
     font-size: 16px;
@@ -2844,7 +2849,8 @@ p {
 .connect-lg, .btn-connect-lg {
     padding: 10px 40px;
 }
-.connect:hover, .kyivstar .kyivstar-form input[type="submit"]:hover, .connect-big:hover, .connect-absolute-bottom:hover, .btn-connect:hover {
+.connect:hover, .kyivstar .kyivstar-form input[type="submit"]:hover,
+.kyivstar .kyivstar-form input[type="button"]:hover, .connect-big:hover, .connect-absolute-bottom:hover, .btn-connect:hover {
     background: #229fff;
     -moz-transition: all 0.3s linear;
     -o-transition: all 0.3s linear;
@@ -2852,7 +2858,8 @@ p {
     transition: all 0.3s linear;
     color: #fff !important;
 }
-.connect:active, .kyivstar .kyivstar-form input[type="submit"]:active, .connect-big:active, .connect-absolute-bottom:active, .btn-connect:active {
+.connect:active, .kyivstar .kyivstar-form input[type="submit"]:active,
+.kyivstar .kyivstar-form input[type="button"]:active, .connect-big:active, .connect-absolute-bottom:active, .btn-connect:active {
     top: 3px;
     background: #229fff;
     color: #fff !important;
@@ -2886,10 +2893,14 @@ p {
 .bg-blue .head-menu-list a {
     color: #ffffff;
 }
-.bg-blue .connect, .bg-blue .kyivstar .kyivstar-form input[type="submit"], .kyivstar .kyivstar-form .bg-blue input[type="submit"], .bg-blue .connect-big, .bg-blue .connect-absolute-bottom {
+.bg-blue .connect, .bg-blue .kyivstar .kyivstar-form input[type="submit"], .kyivstar .kyivstar-form .bg-blue input[type="submit"],
+.bg-blue .kyivstar .kyivstar-form input[type="button"],
+.kyivstar .kyivstar-form .bg-blue input[type="button"], .bg-blue .connect-big, .bg-blue .connect-absolute-bottom {
     color: #3b4952 !important;
 }
-.bg-blue .connect:hover, .bg-blue .kyivstar .kyivstar-form input[type="submit"]:hover, .kyivstar .kyivstar-form .bg-blue input[type="submit"]:hover, .bg-blue .connect-big:hover, .bg-blue .connect-absolute-bottom:hover {
+.bg-blue .connect:hover, .bg-blue .kyivstar .kyivstar-form input[type="submit"]:hover, .kyivstar .kyivstar-form .bg-blue input[type="submit"]:hover,
+.bg-blue .kyivstar .kyivstar-form input[type="button"]:hover,
+.kyivstar .kyivstar-form .bg-blue input[type="button"]:hover, .bg-blue .connect-big:hover, .bg-blue .connect-absolute-bottom:hover {
     background: #ffffff !important;
     color: #3b4952 !important;
 }
@@ -2913,11 +2924,15 @@ p {
 .bg-yellow {
     background: #fdda24;
 }
-.bg-yellow .connect, .bg-yellow .kyivstar .kyivstar-form input[type="submit"], .kyivstar .kyivstar-form .bg-yellow input[type="submit"], .bg-yellow .connect-big, .bg-yellow .connect-absolute-bottom {
+.bg-yellow .connect, .bg-yellow .kyivstar .kyivstar-form input[type="submit"], .kyivstar .kyivstar-form .bg-yellow input[type="submit"],
+.bg-yellow .kyivstar .kyivstar-form input[type="button"],
+.kyivstar .kyivstar-form .bg-yellow input[type="button"], .bg-yellow .connect-big, .bg-yellow .connect-absolute-bottom {
     background-color: #229fff;
     color: #fff !important;
 }
-.bg-yellow .connect:hover, .bg-yellow .kyivstar .kyivstar-form input[type="submit"]:hover, .kyivstar .kyivstar-form .bg-yellow input[type="submit"]:hover, .bg-yellow .connect-big:hover, .bg-yellow .connect-absolute-bottom:hover {
+.bg-yellow .connect:hover, .bg-yellow .kyivstar .kyivstar-form input[type="submit"]:hover, .kyivstar .kyivstar-form .bg-yellow input[type="submit"]:hover,
+.bg-yellow .kyivstar .kyivstar-form input[type="button"]:hover,
+.kyivstar .kyivstar-form .bg-yellow input[type="button"]:hover, .bg-yellow .connect-big:hover, .bg-yellow .connect-absolute-bottom:hover {
     background: #fff;
     -moz-transition: all 0.3s linear;
     -o-transition: all 0.3s linear;
@@ -2925,7 +2940,9 @@ p {
     transition: all 0.3s linear;
     color: #3b4952 !important;
 }
-.bg-yellow .connect:active, .bg-yellow .kyivstar .kyivstar-form input[type="submit"]:active, .kyivstar .kyivstar-form .bg-yellow input[type="submit"]:active, .bg-yellow .connect-big:active, .bg-yellow .connect-absolute-bottom:active {
+.bg-yellow .connect:active, .bg-yellow .kyivstar .kyivstar-form input[type="submit"]:active, .kyivstar .kyivstar-form .bg-yellow input[type="submit"]:active,
+.bg-yellow .kyivstar .kyivstar-form input[type="button"]:active,
+.kyivstar .kyivstar-form .bg-yellow input[type="button"]:active, .bg-yellow .connect-big:active, .bg-yellow .connect-absolute-bottom:active {
     top: 3px;
     background: #fff;
     color: #3b4952 !important;
@@ -4830,7 +4847,6 @@ footer .footer-links .footer-chat-button i {
     font-size: 16px ;
     font-size: 1rem ;
     font-family: 'MuseoSansCyrl-300';
-    margin: 10px 0;
     display: block;
 }
 .kyivstar .form label a, .kyivstar .form_register label a, .kyivstar .form_register_full label a {
@@ -4943,6 +4959,21 @@ footer .footer-links .footer-chat-button i {
     display: inline-block;
     margin: 0;
     width: 95%;
+}
+.kyivstar .form_register_full .info-img {
+  background: url("../images/icon-register-question.png") scroll no-repeat 100% 50% !important;
+  width: 17px;
+  height: 15px;
+}
+.kyivstar .form_register_full .locked-img {
+  background: url("../images/icon-register_key.png") scroll no-repeat 100% 50% !important;
+  width: 16px;
+  height: 15px;
+}
+.kyivstar .form_register_full .warning-img {
+  background: url("../images/icon-register_warning.png") scroll no-repeat 100% 50% !important;
+  width: 20px;
+  height: 18px;
 }
 .kyivstar .form_register_full .input-info {
     background: url("../images/icon-register-question.png") scroll no-repeat 100% 50% !important;
