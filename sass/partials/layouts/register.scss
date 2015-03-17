@@ -151,12 +151,22 @@
 .authorize_main_block
 {
   @extend .register_main_block_w50;
+  width: 100%;
+  max-width: 600px;
   display: inline-block;
   .kyivstar .form_register_full
   {
     max-width: 450px;
   }
-
+}
+.authorize_main_block_half
+{
+  @extend .authorize_main_block;
+}
+.authorize_popup_block
+{
+  display: table-cell;
+  width: auto;
 }
 
 .kyivstar .form_register_full
@@ -182,15 +192,15 @@
 
   .input-info
   {
-    background: url("../images/icon-register-question.png")scroll no-repeat 100% 50% !important;
+      //background: url("../images/icon-register-question.png")scroll no-repeat 100% 50% !important;
   }
   .input-locked
   {
-    background: url("../images/icon-register_key.png")scroll no-repeat 100% 50% !important;
+      //background: url("../images/icon-register_key.png")scroll no-repeat 100% 50% !important;
   }
   .input-warning
   {
-    background: url("../images/icon-register_warning.png")scroll no-repeat 100% 50% !important;
+    //background: url("../images/icon-register_warning.png")scroll no-repeat 100% 50% !important;
     border: solid #b25a58 !important;
     color: #b25a58 !important;
     border-width: 0 0 2px 0 !important;
@@ -209,9 +219,7 @@
   }
   .input-disabled
   {
-    background: url("../images/icon-register-question.png")scroll no-repeat 100% 50% !important;
     color: #2e2e2e !important;
-
   }
 
 

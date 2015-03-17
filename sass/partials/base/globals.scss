@@ -144,6 +144,18 @@ body,
 
 .kyivstar .kyivstar-form
 {
+  .input-wrapper
+  {
+    position: relative;
+    input + img
+    {
+      position: absolute;
+      cursor: pointer;
+      right: 0;
+      top: 11px;
+      bottom: 0;
+    }
+  }
   input {
     font-family: 'MuseoSansCyrl-300';
     color: #3b4952;
@@ -158,6 +170,7 @@ body,
     @include transition(all 0.3s linear);
     @include box-shadow(none);
     outline: none;
+    position: relative;
   }
   input::-webkit-input-placeholder {color:#3b4952 !important;opacity: 1;transition: all 0.3s ease;}
   input::-moz-placeholder          {color:#3b4952 !important;opacity: 1;transition: all 0.3s ease;}/* Firefox 19+ */
@@ -255,6 +268,185 @@ body,
     margin: 0;
   }
 }
+
+.form_internet,
+#homeinet-content
+{
+  input
+  {
+    color: #229fff;
+  }
+  #home-inet-city
+  {
+    width: 31%;
+    padding-right: 15px;
+  }
+  #home-inet-street
+  {
+    width: 31%;
+    padding-right: 15px;
+  }
+  #home-inet-house
+  {
+    width: 31%;
+    padding-right: 15px;
+  }
+
+  #home-inet-surname
+  {
+    width: 31%;
+    padding-right: 15px;
+  }
+  #home-inet-name
+  {
+    width: 31%;
+    padding-right: 15px;
+  }
+  #home-inet-lastname
+  {
+    width: 31%;
+    padding-left: 15px;
+  }
+  #home-inet-phone
+  {
+    width: 47.5%;
+    padding-right: 15px;
+  }
+  #home-inet-mail
+  {
+    width: 46.5%;
+    padding-left: 15px;
+  }
+
+
+  /*Checkbox*/
+  input[type="checkbox"]{
+    vertical-align: top;
+    width: 17px;
+    height: 17px;
+  }
+  input[type="checkbox"] + label{
+    cursor: pointer;
+    font-family: 'MuseoSansCyrl-300';
+    @include font-size(16px);
+    color: #109dff;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+  }
+
+  input[type="checkbox"]:not(checked){
+    position: absolute;
+    opacity: 0;
+  }
+  input[type="checkbox"]:not(checked) + label {
+    position: relative;
+    padding: 0 0 0 30px;
+  }
+  input[type="checkbox"]:not(checked) + label:after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 17px;
+    height: 17px;
+    background: #FFF;
+    border:2px solid #c7c7c7;
+    @include border-radius(3px);
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+  }
+  input[type="checkbox"]:checked + label:after {
+    border:2px solid #109dff;
+    background:url("../images/checkbox-accepted.png") no-repeat scroll 50% 50% #109dff;
+    transition: 0s;
+    @include border-radius(3px);
+  }
+  input[type="checkbox"]:hover + label:after {
+    background: #109dff;
+    border:2px solid #109dff;
+  }
+
+  input[type="radio"] {
+    vertical-align: top;
+    width: 17px;
+    height: 17px;
+  }
+  input[type="radio"] + label{
+    cursor: pointer;
+    font-family: 'MuseoSansCyrl-300';
+    @include font-size(16px);
+    color: #109dff;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+  }
+
+  input[type="radio"]:not(checked){
+    position: absolute;
+    opacity: 0;
+    z-index: 9;
+  }
+  input[type="radio"]:not(checked) + label {
+    position: relative;
+    padding: 0 0 0 30px;
+  }
+  input[type="radio"]:not(checked) + label:after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 17px;
+    height: 17px;
+    background: #FFF;
+    border:2px solid #c7c7c7;
+    @include border-radius(3px);
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+  }
+  input[type="radio"]:not(checked) + label:after {
+    @include border-radius(25px);
+    background: #FFF;
+    border:2px solid #c7c7c7;
+  }
+  input[type="radio"]:checked + label:after {
+    border:2px solid #109dff;
+    background:url("../images/checkbox-accepted.png") no-repeat scroll 50% 50% #109dff;
+    transition: 0s;
+  }
+
+  input[type="radio"]:hover + label:after {
+    background: #109dff;
+    border:2px solid #109dff;
+  }
+
+  /*Textarea*/
+  textarea
+  {
+    border: 1px solid #eaeaea;
+    background: transparent;
+    resize: none;
+    overflow: auto;
+    margin-bottom: 15px;
+    padding: 5px;
+    width: 98%;
+    min-height: 80px;
+    font-family: 'MuseoSansCyrl-300';
+    @include font-size(16px);
+    &:focus
+    {
+      outline: none;
+    }
+  }
+
+}
+
 .kyivstar .table
 {
   margin: 0;
@@ -476,6 +668,7 @@ a
   width: 100%;
   height: 100%;
   table-layout: fixed;
+  word-break: break-word;
 }
 .t-cell
 {

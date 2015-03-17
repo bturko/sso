@@ -33,19 +33,26 @@
 
             <img class="m-top-20 m-bottom-20" src="../images/icon-register-user.png" id="User" alt="User"/>
             <form action="#" class="form_register_full m-auto text-center kyivstar-form form_internet">
-                <input type="text" name="name" id="name12" placeholder="+380676171819" class="input-info"/>
+                <div class="input-wrapper">
+                    <input type="text" name="name" id="name12" placeholder="+380676171819"/>
+                    <img src="../images/icon-register-question.png" alt="Info"/>
+                </div>
                 <p class="text-left">З міркувань безпеки ми відправимо безкоштовне SMS-повідомлення із кодом
                     підтвердження на вказанний мобільний телефон</p>
+
+                <div class="input-wrapper">
                 <input type="password" name="password" id="password3" class="input-locked"
                        placeholder="Ваш пароль"/>
+                    <img src="../images/icon-register_key.png" alt="Info"/>
+                </div>
                 <div class="block m-bottom-10 clearfix">
                     <input type="checkbox" name="checkbox7" id="checkbox7"/>
                     <label class="text-left" for="checkbox7">Запам'ятати мене</label>
                 </div>
 
                 <div class="submit-block text-center">
-                    <a href="#">Скасувати?</a>
                     <input class="connect" type="submit" value="Зарееструватися"/>
+                    <a href="#">Скасувати?</a>
                 </div>
 
                 <div class="submit-block text-center">
@@ -91,7 +98,7 @@
         </div>
 
 
-        <div class="register_additional_block_w50 padding-60 text-center" id="right-block-authorize">
+        <div class="authorize_popup_block padding-60 text-center" id="right-block-authorize">
 
             <div class="register-popup info">
                 <h5>Довідка!</h5>
@@ -101,7 +108,7 @@
                 <a class="popup_close" href="#">X</a>
             </div>
 
-            <div class="register-popup success">
+            <!--<div class="register-popup success">
                 <h5>Обліковій запис для Vlasislav.Tserman@kyivsar.net успішно створено</h5>
                 <p>
                     На вказану Вами адресу електроної пошти було надіслано лист, який містить інструкції з активації. Після активаціі для входу на портал використовуйте адресу  електоної пошти та пароль.
@@ -115,7 +122,7 @@
                     В якості логіна може використовуватися номер мобільного телефону або адрес електроної пошти
                 </p>
                 <a class="popup_close" href="#">X</a>
-            </div>
+            </div>-->
 
         </div>
 
@@ -217,14 +224,19 @@
         jQuery("#right-block-authorize").hide();
 
         jQuery("#User").on("click", function (e) {
-            jQuery(".authorize_main_block").removeClass("authorize_main_block").addClass("register_main_block_w50");
-            jQuery("#right-block-authorize").fadeIn(300);
+            jQuery("#left-block-authorize").addClass("authorize_main_block_half").removeClass("authorize_main_block");
+            jQuery("#right-block-authorize").fadeIn();
             e.preventDefault();
 
         });
 
         jQuery(".popup_close").on("click", function (e) {
             jQuery(this).parent(".register-popup").fadeOut(200);
+            setTimeout(function() {
+                jQuery("#right-block-authorize").fadeOut();
+                jQuery("#left-block-authorize").addClass("authorize_main_block").removeClass("authorize_main_block_half");
+            }, 200);
+
             e.preventDefault();
 
         });
