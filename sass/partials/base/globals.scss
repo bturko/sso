@@ -245,7 +245,8 @@ body,
     outline: none;
   }
 
-  input[type="submit"]
+  input[type="submit"],
+  input[type="button"]
   {
     @extend .connect;
     width: auto;
