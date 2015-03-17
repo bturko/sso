@@ -66,7 +66,7 @@ Icon classes can be used entirely standalone. They are named after their origina
 ```
 */
 .iconks-btn-checked-icon, .btn-select.checked:before {
-  background-image: url(images/sprite-all.png);
+  background-image: url(../images/sprite-all.png);
   background-position: 0px 0px;
   width: 8px;
   height: 8px;
@@ -1733,20 +1733,20 @@ p {
 }
 
 /*Custom register start*/
-.register_main_block_w50, .authorize_main_block, .authorize_main_block_half {
+.register_main_block_w50 {
   display: table-cell;
   width: 50.0%;
   vertical-align: top;
   position: relative;
 }
-.register_main_block_w50 p, .authorize_main_block p, .authorize_main_block_half p {
+.register_main_block_w50 p {
   color: #92999e;
   font-size: 16px ;
   font-size: 1rem ;
   font-family: 'MuseoSansCyrl-300';
   margin: 10px 0 0 0;
 }
-.register_main_block_w50 p .help_link, .authorize_main_block p .help_link, .authorize_main_block_half p .help_link, .register_main_block_w50 p .skip-link, .authorize_main_block p .skip-link, .authorize_main_block_half p .skip-link {
+.register_main_block_w50 p .help_link, .register_main_block_w50 p .skip-link {
   margin: 0 5px 0 0;
 }
 
@@ -1758,6 +1758,8 @@ p {
 }
 
 .authorize_main_block, .authorize_main_block_half {
+  vertical-align: top;
+  position: relative;
   width: 100%;
   max-width: 600px;
   display: inline-block;
@@ -2041,6 +2043,22 @@ p {
   .authorize_popup_block .register-popup {
     right: 30px !important;
     max-width: 150px !important;
+  }
+
+  .register_main_block_w50,
+  .register_additional_block_w50 {
+    width: 100%;
+    display: block;
+  }
+
+  .info,
+  .popup-alert {
+    right: 30px !important;
+    max-width: 150px !important;
+  }
+
+  .m-top-105 {
+    margin: 0 !important;
   }
 }
 /*1024px END*/

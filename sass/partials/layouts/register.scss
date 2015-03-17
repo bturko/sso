@@ -150,7 +150,8 @@
 
 .authorize_main_block
 {
-  @extend .register_main_block_w50;
+  vertical-align: top;
+  position: relative;
   width: 100%;
   max-width: 600px;
   display: inline-block;
