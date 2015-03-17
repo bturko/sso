@@ -6,53 +6,65 @@
             <h1 class="">Рєєстрація</h1>
 
             <div class="register-popup success" ng-show="showSuccessMsg">
-                <h5>Обліковій запис для Vlasislav.Tserman@kyivsar.net успішно створено</h5>
+                <h5>Обліковій запис для {{regLogin}} успішно створено</h5>
                 <p>
-                    На вказану Вами адресу електроної пошти було надіслано лист, який містить інструкції з активації. Після активаціі для входу на портал використовуйте адресу  електоної пошти та пароль.
+                    На вказану Вами адресу електроної пошти було надіслано лист, який містить інструкції з активації. Після активаціі для входу на портал використовуйте адресу електоної пошти та пароль.
                 </p>
                 <a class="popup_close" ng-click="showSuccessMsg = false">X</a>
             </div>
 
 
             <form action="#" class="form_register_full m-top-25 text-center kyivstar-form">
-                <input type="text" name="name" class="input-info input-disabled" id="name22"
-                       placeholder="+380676171819" ng-model="regLogin"/>
-                <div ng-show="showSMSBlock">
-                    <label class="text-left">На Ваш номер телефону +380676171819 було надіслано SMS-повідомлення із кодом
+                <div class="input-wrapper">
+                    <input type="text" name="name" class="input-info input-disabled" id="reg-name"
+                       placeholder="+380671234567" ng-model="regLogin" ng-click="returnInput()" />
+                    <div style="background: url(images/icon-register-question.png); width: 16px; height: 16px; position: absolute; right: 2px; top: 12px;" alt="" ng-click="showHelpPopup = !showHelpPopup;" ></div>
+                </div>
+                    <div ng-show="showSMSBlock1">
+                        <p class="text-left">З міркувань безпеки ми відправимо безкоштовне SMS-повідомлення із кодом
+                        підтвердження на вказанний мобільний телефон</p>
+                        <input class="connect" type="button" value="Отримати код" ng-click="get_sms_code()" />
+                    </div>
+                    <div ng-show="showSMSBlock2">
+                    <label class="text-left">На Ваш номер телефону {{regLogin}} було надіслано SMS-повідомлення із кодом
                     підтвердження. Введіть отриманний код в поле нижче</label>
                       <input type="text" name="name" id="name5" class="input-locked"
-                       placeholder="Код підтвердження з SMS-повідомлення"/>
+                       placeholder="Код підтвердження з SMS-повідомлення" ng-model="smsCodeIn" />
+                        <input class="connect" type="button" value="Вхiд" ng-click="get_enter()" />
                 </div>
-                <input type="text" name="name" id="name2" class="input-warning" placeholder="Електронна пошта або номер мобильного">
+                <!--<input type="text" name="name" id="name2" class="input-warning" placeholder="Електронна пошта або номер мобильного">-->
 
                 <div class="submit-block text-center">
-                    <a href="#" class="pull-left m-top-15">Скасувати?</a>
-                    <input class="connect" type="button" value="Зарееструватися" ng-click="register_newUser()" />
+                    <a class="pull-left m-top-15" ng-click="resetAll()">Скасувати?</a>
+                    <input class="connect" type="button" value="Зарееструватися" ng-show="showRegBtn" ng-click="register_newUser()" />
                 </div>
             </form>
 
-            <h5 class="m-top-25 m-bottom-20">Спробуйте один з альтернативних способів нижче</h5>
+            <div ng-show="showHelpBlock">
+                <h5 class="m-top-25 m-bottom-20">Спробуйте один з альтернативних способів нижче</h5>
 
-            <form action="#" class="form_register_full text-center kyivstar-form form_internet">
-                <div class="block m-bottom-10 clearfix">
-                    <input type="checkbox" name="checkbox1" id="checkbox1"/>
-                    <label class="text-left" for="checkbox1">Надіслати тестове повідомлення ще раз</label>
-                </div>
-                <div class="block m-bottom-10 clearfix">
-                    <input type="checkbox" name="checkbox2" id="checkbox2"/>
-                    <label class="text-left" for="checkbox2">Вікористати PUK-2 вашої сім-картки</label>
-                </div>
-                <div class="block m-bottom-10 clearfix">
-                    <input type="checkbox" name="checkbox3" id="checkbox3"/>
-                    <label class="text-left" for="checkbox3">Зареєструватися, використовуючи адресу електроної пошти</label>
-                </div>
+                <form action="#" class="form_register_full text-center kyivstar-form form_internet">
+                    <div class="block m-bottom-10 clearfix">
+                        <input type="checkbox" name="checkbox1" id="checkbox1"/>
+                        <label class="text-left" for="checkbox1">Надіслати тестове повідомлення ще раз</label>
+                    </div>
+                    <div class="block m-bottom-10 clearfix">
+                        <input type="checkbox" name="checkbox2" id="checkbox2"/>
+                        <label class="text-left" for="checkbox2">Вікористати PUK-2 вашої сім-картки</label>
+                    </div>
+                    <div class="block m-bottom-10 clearfix">
+                        <input type="checkbox" name="checkbox3" id="checkbox3"/>
+                        <label class="text-left" for="checkbox3">Зареєструватися, використовуючи адресу електроної пошти</label>
+                    </div>
 
-                <div class="clearfix"></div>
-                <div class="submit-block text-center">
-                    <input class="connect" type="button" value="Скористатися цим способом"/>
-                </div>
+                    <div class="clearfix"></div>
+                    <div class="submit-block text-center">
+                        <input class="connect" type="button" value="Скористатися цим способом"/>
+                    </div>
 
-            </form>
+                </form>
+            </div>
+
 
         </div>
 
@@ -72,6 +84,22 @@
                     В якості логіна може використовуватися номер мобільного телефону або адрес електроної пошти
                 </p>
                 <a class="popup_close" ng-click="showWrongLogin = false">X</a>
+            </div>
+
+            <div class="register-popup popup-alert" ng-show="showWrongPhone">
+                <h5>Щось з телефоном не так!</h5>
+                <p>
+                    В якості логіна може використовуватися номер мобільного телефону або адрес електроної пошти
+                </p>
+                <a class="popup_close" ng-click="showWrongPhone = false">X</a>
+            </div>
+
+            <div class="register-popup popup-alert" ng-show="showWrongSCode">
+                <h5>Невiрний код пiдтвердження!</h5>
+                <p>
+
+                </p>
+                <a class="popup_close" ng-click="showWrongSCode = false">X</a>
             </div>
 
             <h2 class=" m-top-105">Чому потрібно рєєструватися?</h2>

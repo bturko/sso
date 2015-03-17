@@ -25,15 +25,11 @@ ssoApp.config(function($routeProvider) {
             controller  : 'aboutController'
         })
 
-        .when('/success', {
-            templateUrl : 'pages/register/success.html',
+        .when('/personal', {
+            templateUrl : 'pages/register/personal.html',
             controller  : 'contactController'
         })
 
-        .when('/success2', {
-            templateUrl : 'pages/register/success2.html',
-            controller  : 'contactController'
-        });
 });
 
 ssoApp.controller('mainController', function($scope) {
@@ -117,14 +113,73 @@ ssoApp.controller('registerController', function($scope) {
     $scope.showSuccessMsg = false;
     $scope.showHelpPopup = false;
     $scope.showWrongLogin = false;
-    $scope.showSMSBlock = false;
+    $scope.showSMSBlock1 = false;
+    $scope.showSMSBlock2 = false;
+    $scope.showHelpBlock = false;
+    $scope.showWrongPhone = false;
+    $scope.showWrongSCode = false;
+    $scope.showRegBtn = true;
+
     $scope.regLogin = "+380";
+    $scope.smsCodeIn = "";
 
     $scope.register_newUser = function(){
-       if($scope.regLogin==""){
-            $scope.showWrongLogin = true;
+       if($scope.regLogin!=""){
+
+           console.log($scope.regLogin.length)
+           if($scope.regLogin.length <10){
+               $("#reg-name").attr("placeholder", "Електронна пошта або номер мобильного")
+               $("#reg-name").removeClass("input-info").addClass("input-warning");
+               $scope.showWrongPhone = true;
+           }
+           else{
+                $scope.showSMSBlock1 = true;
+               $scope.showRegBtn = false;
+           }
+        }
+        else{
+           $scope.showWrongLogin = true;
+       }
+
+    }
+    $scope.returnInput = function(){
+        $("#reg-name").attr("placeholder", "+380")
+        $("#reg-name").addClass("input-info").removeClass("input-warning");
+    }
+
+    $scope.resetAll = function(){
+        $scope.showSuccessMsg = false;
+        $scope.showHelpPopup = false;
+        $scope.showWrongLogin = false;
+        $scope.showSMSBlock1 = false;
+        $scope.showSMSBlock2 = false;
+        $scope.showHelpBlock = false;
+        $scope.showWrongSCode = false;
+        $scope.showRegBtn = true;
+
+        $scope.regLogin = "+380";
+        $scope.smsCodeIn = "";
+        $("#reg-name").attr("placeholder", "+380")
+        $("#reg-name").addClass("input-info").removeClass("input-warning");
+    }
+
+    $scope.get_sms_code = function () {
+        $scope.showSMSBlock1 = false;
+        $scope.showSMSBlock2 = true;
+
+    }
+
+    $scope.get_enter = function () {
+        if ($scope.smsCodeIn == "") {
+            $scope.showWrongSCode = true;
+            $scope.showHelpBlock = true;
+        }
+        else{
+
         }
     }
+
+
 });
 
 ssoApp.controller('contactController', function($scope) {
