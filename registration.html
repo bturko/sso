@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<!-- define angular app -->
+<html ng-app="ssoApp">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SCROLLS
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />-->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+</head>
+
+<!-- define angular controller -->
+<body class="kyivstar bg-white" ng-controller="mainController">
+
+<nav class=" index_main">
+    <div class="">
+        <div class="text-center">
+            <h1>Registration</h1>
+            <ul class="text-center padding-50">
+                <li class="padding-30-side pull-left"><a href="#auth"><i class="fa fa-home"></i> AUTH & HELP</a></li>
+                <li class="padding-30-side pull-left"><a href="#"><i class="fa fa-home"></i> EMAIL SIGNUP</a></li>
+                <li class="padding-30-side pull-left"><a href="#error"><i class="fa fa-shield"></i> EMAIL SIGNUP ERROR</a></li>
+                <li class="padding-30-side pull-left"><a href="#success"><i class="fa fa-comment"></i> EMAIL SIGNUP 2</a></li>
+                <li class="padding-30-side pull-left"><a href="#success2"><i class="fa fa-comment"></i> EMAIL SUCCESS 3</a></li>
+            </ul>
+            <br>
+            <!--<button ng-click="toggle = !toggle">?</button>-->
+            <!--<div class="box on" ng-show="toggle" ng-animate="'box'">Подсказка: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</div>-->
+             <br>
+        </div>
+    </div>
+    <div class="table">
+        <div ng-view class="w60"></div>
+    </div>
+</nav>
+
+
+
+    <!-- angular templating -->
+    <!-- this is where content will be injected -->
+
+
+</div>
+
+<footer class="text-center">
+    <!--<p>View the tutorial on <a href="http://scotch.io/tutorials/javascript/single-page-apps-with-angularjs-routing-and-templating">Scotch.io</a></p>
+
+    <p>View a tutorial on <a href="http://scotch.io/tutorials/javascript/animating-angularjs-apps-ngview">Animating Your Angular Single Page App</a></p>
+--></footer>
+
+    <script type="text/javascript" src="vendor/jquery-1.11.1.min.js"></script>
+    <script src="vendor/angular.min.js"></script>
+    <script src="vendor/angular-route.js"></script>
+    <script src="vendor/angular-animate.js"></script>
+    <script src="app/app.js"></script>
+</body>
+
+</html>
