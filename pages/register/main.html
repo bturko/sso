@@ -18,7 +18,7 @@
                 <div class="input-wrapper">
                     <input type="text" name="name" class="input-info input-disabled" id="reg-name"
                            placeholder="+380671234567" ng-model="regLogin" ng-click="returnInput()" />
-                    <div style="background: url(images/icon-register-question.png); width: 16px; height: 16px; position: absolute; right: 2px; top: 12px;" alt="" ng-click="showHelpPopup = !showHelpPopup;" ></div>
+                    <div id="first-icon" class="input-img info-img" ng-click="showHelpPopup = !showHelpPopup;" ></div>
                 </div>
                 <div ng-show="showSMSBlock1">
                     <p class="text-left">З міркувань безпеки ми відправимо безкоштовне SMS-повідомлення із кодом
@@ -30,6 +30,12 @@
                         підтвердження. Введіть отриманний код в поле нижче</label>
                     <input type="text" name="name" id="name5" class="input-locked"
                            placeholder="Код підтвердження з SMS-повідомлення" ng-model="smsCodeIn" />
+                    <input class="connect" type="button" value="Вхiд" ng-click="get_enter()" />
+                </div>
+                <div ng-show="showPukBlock">
+                    <label class="text-left">Iндивiдуальнi PUK1\PUK2-код до SIM-картки зазначенi на пластиковому кардхолдерi, що мiститься на стартовому пакетi</label>
+                    <input type="text" name="name" id="name8" class="input-locked"
+                           placeholder="PUK2-код вашоi SIM-картки" />
                     <input class="connect" type="button" value="Вхiд" ng-click="get_enter()" />
                 </div>
                 <!--<input type="text" name="name" id="name2" class="input-warning" placeholder="Електронна пошта або номер мобильного">-->
@@ -59,7 +65,7 @@
 
                     <div class="clearfix"></div>
                     <div class="submit-block text-center">
-                        <input class="connect" type="submit" value="Скористатися цим способом"/>
+                        <input class="connect" type="button" value="Скористатися цим способом" ng-click="show_puk()" />
                     </div>
 
                 </form>

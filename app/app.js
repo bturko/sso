@@ -32,7 +32,7 @@ ssoApp.config(function($routeProvider) {
 
 });
 
-ssoApp.controller('mainController', function($scope) {
+ssoApp.controller('mainController', function($scope, $location) {
     $scope.showAuthHelp = false;
     $scope.toggleLogin = false;
     $scope.toggleExist = false;
@@ -89,8 +89,6 @@ ssoApp.controller('mainController', function($scope) {
     }
 
     $scope.register = function(){
-        //$scope.showPukBlock = false;
-
         if($scope.userLogin.length < 6){
             $scope.toggleLogin = true;
             $scope.showRightBlock();
@@ -111,6 +109,10 @@ ssoApp.controller('mainController', function($scope) {
                         $scope.showSuccessCreating=true;
                         $scope.toggleSMS2=false;
                         $scope.show_regBtn = false;
+                        //alert(1231)
+                        setTimeout(function(){
+                            $location.path( "/success" );
+                        }, 2000)
                     }
                 }
                 else{
@@ -137,7 +139,7 @@ ssoApp.controller('mainController', function($scope) {
     }
 });
 
-ssoApp.controller('registerController', function($scope) {
+ssoApp.controller('registerController', function($scope, $location) {
     $scope.showSuccessMsg = false;
     $scope.showHelpPopup = false;
     $scope.showWrongLogin = false;
@@ -159,6 +161,7 @@ ssoApp.controller('registerController', function($scope) {
                 $("#reg-name").attr("placeholder", "Електронна пошта або номер мобильного")
                 $("#reg-name").removeClass("input-info").addClass("input-warning");
                 $scope.showWrongPhone = true;
+                jQuery("#first-icon").removeClass("info-img").addClass("warning-img");
             }
             else{
                 $scope.showSMSBlock1 = true;
@@ -173,6 +176,7 @@ ssoApp.controller('registerController', function($scope) {
     $scope.returnInput = function(){
         $("#reg-name").attr("placeholder", "+380")
         $("#reg-name").addClass("input-info").removeClass("input-warning");
+        jQuery("#first-icon").addClass("info-img").removeClass("warning-img");
     }
 
     $scope.resetAll = function(){
@@ -184,6 +188,7 @@ ssoApp.controller('registerController', function($scope) {
         $scope.showHelpBlock = false;
         $scope.showWrongSCode = false;
         $scope.showRegBtn = true;
+        $scope.showPukBlock = false;
 
         $scope.regLogin = "+380";
         $scope.smsCodeIn = "";
@@ -201,12 +206,19 @@ ssoApp.controller('registerController', function($scope) {
         if ($scope.smsCodeIn == "") {
             $scope.showWrongSCode = true;
             $scope.showHelpBlock = true;
+            if($scope.showPukBlock===true) $location.path( "/personal" );
         }
         else{
-
+            //alert(34)
+            $location.path( "/personal" );
         }
     }
 
+    $scope.show_puk =function(){
+        $scope.showPukBlock = true;
+        $scope.showSMSBlock2 = false;
+        $scope.showHelpBlock = false;
+    }
 
 });
 
