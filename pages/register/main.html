@@ -17,7 +17,7 @@
                 <div class="input-wrapper">
                     <input type="text" name="name" id="reg-name"
                            placeholder="+380671234567" ng-model="regLogin" ng-click="returnInput()" />
-                    <div class="info-img" alt="" ng-click="showHelpPopup = !showHelpPopup;" ></div>
+                    <div id="first-icon" class="input-img info-img" ng-click="showHelpPopup = !showHelpPopup;" ></div>
                 </div>
 
                 <div ng-show="showSMSBlock1">
@@ -39,6 +39,12 @@
                                placeholder="Код підтвердження з SMS-повідомлення" ng-model="smsCodeIn" />
                         <div class="info-img" alt="" ng-click="showHelpPopup = !showHelpPopup;" ></div>
                     </div>
+                <div ng-show="showPukBlock">
+                    <label class="text-left">Iндивiдуальнi PUK1\PUK2-код до SIM-картки зазначенi на пластиковому кардхолдерi, що мiститься на стартовому пакетi</label>
+                    <input type="text" name="name" id="name8" class="input-locked"
+                           placeholder="PUK2-код вашоi SIM-картки" />
+                    <input class="connect" type="button" value="Вхiд" ng-click="get_enter()" />
+                </div>
 
                     <div class="submit-block text-center">
                         <input class="connect" type="button" value="Зарееструватися" ng-click="get_enter()" />
