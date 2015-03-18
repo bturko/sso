@@ -54,12 +54,15 @@ ssoApp.controller('authController', function($scope, $location) {
     $scope.userPassword = "";
     $scope.showSocials = true;
     $scope.userSmsCode = "";
+    $scope.userPukCode = "";
 
     $scope.resetAll = function () {
         this.userLogin = '';
         this.userPassword = '';
         this.toggleSMS = false;
         this.toggleSMS2 = false;
+        $scope.userPukCode = "";
+
         $scope.showDisposablePassword = true;
         $scope.showPassword = true;
         $scope.show_regBtn = true;
@@ -90,53 +93,78 @@ ssoApp.controller('authController', function($scope, $location) {
 
     $scope.showHelp = function(){
         $scope.showAuthHelp = true;
-//        $scope.showRightBlock();
     }
 
     $scope.puk_btn =function(){
-        //alert(33)
         $scope.toggleSMS = false;
         $scope.showPukBlock = true;
         $scope.showCodeProblemBlock = false;
         $scope.showCodeProblemLink = false;
     }
 
+    $scope.register_puk = function(){
+//        alert($scope.userPukCode.length)
+        if( $scope.userPukCode.length > 3 ){
+            $scope.showSuccessCreating = true;
+            $scope.toggleSMS2 = false;
+            $scope.show_regBtn = false;
+            $scope.showPassword = false;
+            $scope.showLogin = false;
+            $scope.showSocials = false;
+            $scope.showPukBlock = false;
+            setTimeout(function () {
+                $location.path("/success");
+            }, 1000)
+        }
+        else{
+            alert("Введиите PUK-код!")
+        }
+    }
+
     $scope.register = function(){
         $scope.disableLogin = true;
 
-        if($scope.userLogin.length < 6){
+        if($scope.userLogin.length < 8){
             $scope.showAuthAlertLogin = true;
-//            $scope.showRightBlock();
         }
         else{
             if($scope.userPassword==""){
                 $scope.showAuthAlertPassword = true;
-//                $scope.showRightBlock();
             }
             else{
                 if($scope.toggleSMS2==true){
-                    if($scope.userSmsCode==""){
+                    if ($scope.toggleSMS === true && $scope.userSmsCode == "" ){
                         $scope.showAuthAlertWrongCode = true;
                         $scope.showCodeProblemLink = true;
-//                        $scope.showRightBlock();
                     }
-                    else{
-                        $scope.showSuccessCreating=true;
-                        $scope.toggleSMS2=false;
+                     else {
+                        $scope.showSuccessCreating = true;
+                        $scope.toggleSMS2 = false;
                         $scope.show_regBtn = false;
                         $scope.showPassword = false;
                         $scope.showLogin = false;
                         $scope.showSocials = false;
-                        setTimeout(function(){
-                            $location.path( "/success" );
+                        $scope.showPukBlock = false;
+                        setTimeout(function () {
+                            $location.path("/success");
                         }, 1000)
                     }
                 }
                 else{
-                    $scope.toggleSMS = true;
-                    $scope.showPassword = false;
+//                    $scope.toggleSMS = true;
+//                    $scope.showPassword = false;
+//                    $scope.show_regBtn = false;
+                    //alert(7)
+                    $scope.showSuccessCreating = true;
+                    $scope.toggleSMS2 = false;
                     $scope.show_regBtn = false;
-                    //$("#user-login").attr("disabled", "disabled");
+                    $scope.showPassword = false;
+                    $scope.showLogin = false;
+                    $scope.showSocials = false;
+                    $scope.showPukBlock = false;
+                    setTimeout(function () {
+                        $location.path("/success");
+                    }, 1000)
                 }
 
             }
@@ -145,14 +173,16 @@ ssoApp.controller('authController', function($scope, $location) {
     }
 
     $scope.getDisposablePassword = function(){
-        if( $scope.userLogin != '' ){
+        if( $scope.userLogin.length < 8 ){
+            $scope.showAuthAlertLogin = true;
+
+        }
+        else{
+            //alert("не введен логин!");
             this.toggleSMS = true;
             $scope.showDisposablePassword = false;
             $scope.disableLogin = true;
             $scope.showPassword = false;
-        }
-        else{
-            alert("не введен логин!");
         }
     }
 
