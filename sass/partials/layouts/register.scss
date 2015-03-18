@@ -121,6 +121,13 @@
 
 
 /*Custom register start*/
+.authentication_wrap
+{
+  max-width: 600px;
+  height: auto;
+  position: relative;
+  margin: auto;
+}
 .register_main_block_w50
 {
   display: table-cell;
@@ -194,21 +201,33 @@
 
   .info-img
   {
-      background: url("../images/icon-register-question.png")scroll no-repeat 100% 50% !important;
+    background: url("../images/icon-register-question.png")scroll no-repeat 100% 50% !important;
     width: 17px;
     height: 15px;
+    position: absolute;
+    right: 0;
+    top: 13px;
+    cursor: pointer;
   }
   .locked-img
   {
-     background: url("../images/icon-register_key.png")scroll no-repeat 100% 50% !important;
+    background: url("../images/icon-register_key.png")scroll no-repeat 100% 50% !important;
     width: 16px;
     height: 15px;
+    position: absolute;
+    right: 0;
+    top: 13px;
+    cursor: pointer;
   }
   .warning-img
   {
      background: url("../images/icon-register_warning.png")scroll no-repeat 100% 50% !important;
     width: 20px;
     height: 18px;
+    position: absolute;
+    right: 0;
+    top: 13px;
+    cursor: pointer;
   }
   .input-warning
   {
@@ -240,6 +259,7 @@
 {
   margin-top: 30px;
   position: relative;
+  cursor: pointer;
   a
   {
     position: absolute;

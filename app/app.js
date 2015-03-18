@@ -148,7 +148,7 @@ ssoApp.controller('registerController', function($scope) {
     $scope.showWrongSCode = false;
     $scope.showRegBtn = true;
 
-    $scope.regLogin = "+380";
+    $scope.regLogin = "Електронна пошта або номер мобильного";
     $scope.smsCodeIn = "";
 
     $scope.register_newUser = function(){

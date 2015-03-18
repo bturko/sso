@@ -1,9 +1,8 @@
-<!--SECTION SIGNUP EMAIL SIGNUP START
-<h6 style="font-size: 23px;color: #000; text-align: center;margin: 25px 0 0 0;">EMAIL SIGNUP</h6>-->
-<section data-ng-controller="registerController">
-    <div class="block-white-wrap m-top-25 table">
-        <div class="register_main_block_w50 padding-60">
-            <h1 class="">Рєєстрація</h1>
+<!--SECTION SIGNUP EMAIL SIGNUP START-->
+<div class="authentication_wrap kyivstar" data-ng-controller="registerController">
+    <div class="block-white-wrap relative">
+        <div class="padding-60">
+            <h1 class="text-center">Рєєстрація</h1>
 
             <div class="register-popup success" ng-show="showSuccessMsg">
                 <h5>Обліковій запис для {{regLogin}} успішно створено</h5>
@@ -16,27 +15,42 @@
 
             <form action="#" class="form_register_full m-top-25 text-center kyivstar-form">
                 <div class="input-wrapper">
-                    <input type="text" name="name" class="input-info input-disabled" id="reg-name"
+                    <input type="text" name="name" id="reg-name"
                            placeholder="+380671234567" ng-model="regLogin" ng-click="returnInput()" />
-                    <div style="background: url(images/icon-register-question.png); width: 16px; height: 16px; position: absolute; right: 2px; top: 12px;" alt="" ng-click="showHelpPopup = !showHelpPopup;" ></div>
+                    <div class="info-img" alt="" ng-click="showHelpPopup = !showHelpPopup;" ></div>
                 </div>
+
                 <div ng-show="showSMSBlock1">
-                    <p class="text-left">З міркувань безпеки ми відправимо безкоштовне SMS-повідомлення із кодом
+                    <p class="text-left m-top-15 m-bottom-20">З міркувань безпеки ми відправимо безкоштовне SMS-повідомлення із кодом
                         підтвердження на вказанний мобільний телефон</p>
-                    <input class="connect" type="button" value="Отримати код" ng-click="get_sms_code()" />
+
+                    <div class="submit-block text-center">
+                        <input class="connect" type="button" value="Отримати код" ng-click="get_sms_code()" />
+                        <a class="pull-left m-top-15" ng-click="resetAll()">Скасувати?</a>
+                    </div>
+
                 </div>
+
                 <div ng-show="showSMSBlock2">
-                    <label class="text-left">На Ваш номер телефону {{regLogin}} було надіслано SMS-повідомлення із кодом
-                        підтвердження. Введіть отриманний код в поле нижче</label>
-                    <input type="text" name="name" id="name5" class="input-locked"
-                           placeholder="Код підтвердження з SMS-повідомлення" ng-model="smsCodeIn" />
-                    <input class="connect" type="button" value="Вхiд" ng-click="get_enter()" />
+                    <p class="text-left m-top-15 m-bottom-20">На Ваш номер телефону {{regLogin}} було надіслано SMS-повідомлення із кодом
+                        підтвердження. Введіть отриманний код в поле нижче</p>
+                    <div class="input-wrapper">
+                        <input type="text" name="name" id="name5"
+                               placeholder="Код підтвердження з SMS-повідомлення" ng-model="smsCodeIn" />
+                        <div class="info-img" alt="" ng-click="showHelpPopup = !showHelpPopup;" ></div>
+                    </div>
+
+                    <div class="submit-block text-center">
+                        <input class="connect" type="button" value="Зарееструватися" ng-click="get_enter()" />
+                        <a class="pull-left m-top-15" ng-click="resetAll()">Скасувати?</a>
+                    </div>
+
                 </div>
                 <!--<input type="text" name="name" id="name2" class="input-warning" placeholder="Електронна пошта або номер мобильного">-->
 
-                <div class="submit-block text-center">
+                <div class="submit-block text-center" ng-show="showRegBtn">
+                    <input id="reg_bt" class="connect" type="button" value="Зарееструватися"  ng-click="register_newUser()" />
                     <a class="pull-left m-top-15" ng-click="resetAll()">Скасувати?</a>
-                    <input id="reg_bt" class="connect" type="button" value="Зарееструватися" ng-show="showRegBtn" ng-click="register_newUser()" />
                 </div>
             </form>
 
@@ -49,7 +63,7 @@
                         <label>Надіслати тестове повідомлення ще раз</label>
                     </div>
                     <div class="block m-bottom-10 text-left  clearfix">
-                        <input name="radio" type="radio" value="radio">
+                        <input name="radio" type="radio" value="radio" checked>
                         <label>Вікористати PUK-2 вашої сім-картки</label>
                     </div>
                     <div class="block m-bottom-10 text-left  clearfix">
@@ -59,61 +73,30 @@
 
                     <div class="clearfix"></div>
                     <div class="submit-block text-center">
-                        <input class="connect" type="submit" value="Скористатися цим способом"/>
+                        <input class="connect" type="button" value="Скористатися цим способом"/>
                     </div>
 
                 </form>
             </div>
 
 
+            <h4 class="m-top-25">Зв'язок с соціальними мережами</h4>
+
+            <p class="m-top-15">Ви можете зарєєструватися за допомогою облікових записів соціальніх мереж</p>
+
+            <div class="block">
+                <a class="social_link" href="#"><i class="iconks iconks-social-fb"></i>Facebook</a>
+                <a class="social_link" href="#"><i class="iconks iconks-social-goo"></i>Google</a>
+                <a class="social_link" href="#"><i class="iconks iconks-social-tw"></i>Twitter</a>
+                <a class="social_link" href="#"><i class="iconks iconks-social-vk"></i>Vkontakte</a>
+            </div>
+
+            <div class="block text-center m-top-20">
+                <a href="#">Вже зарєєстровані?</a>
+            </div>
+
         </div>
 
-        <div class="register_additional_block_w50 padding-60 text-center">
-
-            <div class="register-popup info" ng-show="showHelpPopup">
-                <h5>Довідка!</h5>
-                <p>
-                    В якості логіна може використовуватися номер мобільного телефону або адрес електроної пошти
-                </p>
-                <a class="popup_close" ng-click="showHelpPopup = false">X</a>
-            </div>
-
-            <div class="register-popup popup-alert" ng-show="showWrongLogin">
-                <h5>Невірний формат логіна!</h5>
-                <p>
-                    В якості логіна може використовуватися номер мобільного телефону або адрес електроної пошти
-                </p>
-                <a class="popup_close" ng-click="showWrongLogin = false">X</a>
-            </div>
-
-            <div class="register-popup popup-alert" ng-show="showWrongPhone">
-                <h5>Щось з телефоном не так!</h5>
-                <p>
-                    В якості логіна може використовуватися номер мобільного телефону або адрес електроної пошти
-                </p>
-                <a class="popup_close" ng-click="showWrongPhone = false">X</a>
-            </div>
-
-            <div class="register-popup popup-alert" ng-show="showWrongSCode">
-                <h5>Помилка!</h5>
-                <p>Невiрний код пiдтвердження!</p>
-                <a class="popup_close" ng-click="showWrongSCode = false">X</a>
-            </div>
-
-            <h2 class=" m-top-105 text-left">Чому потрібно рєєструватися?</h2>
-            <ol class="list-register text-left">
-                <li>
-                    <p>Ви отримаете доступ до усіх сайтів Київстар</p>
-                </li>
-                <li>
-                    <p>Ви отримаєте можливість переглядати персональну інформацію</p>
-                </li>
-                <li>
-                    <p>Ще багато цікавішого...</p>
-                </li>
-            </ol>
-
-        </div>
     </div>
-</section>
+</div>
 <!--SECTION SIGNUP EMAIL SIGNUP START-->
