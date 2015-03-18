@@ -7,125 +7,183 @@ ssoApp.config(function($routeProvider) {
 
         .when('/', {
             templateUrl : 'pages/auth/main.html',
-            controller  : 'mainController'
+            controller  : 'authController'
         })
 
         .when('/auth', {
             templateUrl : 'pages/auth/main.html',
-            controller  : 'mainController'
+            controller  : 'authController'
         })
 
         .when('/registration', {
             templateUrl : 'pages/register/main.html',
-            controller  : 'mainController'
+            controller  : 'registerController'
         })
 
         .when('/success', {
          templateUrl : 'pages/auth/success.html',
-         controller  : 'mainController'
+         controller  : 'authController'
          })
 
         .when('/personal', {
             templateUrl : 'pages/register/personal.html',
-            controller  : 'contactController'
+            controller  : 'registerController'
         })
 
 });
 
-ssoApp.controller('mainController', function($scope, $location) {
+ssoApp.controller('authController', function($scope, $location) {
+    $scope.disableLogin = false;
     $scope.showAuthHelp = false;
-    $scope.toggleLogin = false;
+    $scope.showAuthAlertLogin = false;
     $scope.toggleExist = false;
     $scope.toggleSMS = false;
     $scope.toggleSMS2 = false;
-    $scope.togglePassword = false;
-    $scope.show_password = true;
+    $scope.showAuthAlertPassword = false;
+    $scope.showPassword = true;
     $scope.show_regBtn = true;
-    $scope.toggleWrongCode = false;
+    $scope.showLogin = true;
+    $scope.showAuthAlertWrongCode = false;
     $scope.showCodeProblemLink = false;
     $scope.showCodeProblemBlock = false;
     $scope.showSuccessCreating = false;
     $scope.showPukBlock = false;
+    $scope.showDisposablePassword = true;
 
-    $scope.userLogin = '+380';
+    $scope.userLogin = '';
     $scope.userPassword = "";
     $scope.showSocials = true;
     $scope.userSmsCode = "";
+    $scope.userPukCode = "";
 
     $scope.resetAll = function () {
         this.userLogin = '';
         this.userPassword = '';
         this.toggleSMS = false;
         this.toggleSMS2 = false;
-        $scope.show_password = true;
+        $scope.userPukCode = "";
+
+        $scope.showDisposablePassword = true;
+        $scope.showPassword = true;
         $scope.show_regBtn = true;
         $scope.showCodeProblemLink = false;
         $scope.showCodeProblemBlock = false;
-        $("#user-login").attr("placeholder", '')
-        $("#user-password").attr("placeholder", this.userPassword)
-        $("#user-login").prop('disabled', false);
+        $scope.showPukBlock = false;
+
+        $scope.showAuthHelp = false;
+        $scope.showAuthAlertPassword = false;
+        $scope.showAuthAlertLogin = false;
+        $scope.showAuthAlertWrongCode = false;
+
+        $scope.disableLogin = false;
+
+        $("#user-login").attr("placeholder", 'Електронна пошта або номер мобiльного')
+        $("#user-password").attr("placeholder", 'Ваш пароль');
     };
 
-    $scope.showRightBlock = function(){
-        jQuery("#left-block-authorize").addClass("authorize_main_block_half").removeClass("authorize_main_block");
-        jQuery("#right-block-authorize").css("display", "table-cell");
-    }
-
-    $scope.hideRightBlock = function(){
-        jQuery("#right-block-authorize").fadeOut();
-        jQuery("#left-block-authorize").addClass("authorize_main_block").removeClass("authorize_main_block_half");
-    }
+//    $scope.showRightBlock = function(){
+//        jQuery("#left-block-authorize").addClass("authorize_main_block_half").removeClass("authorize_main_block");
+//        jQuery("#right-block-authorize").css("display", "table-cell");
+//    }
+//
+//    $scope.hideRightBlock = function(){
+//        jQuery("#right-block-authorize").fadeOut();
+//        jQuery("#left-block-authorize").addClass("authorize_main_block").removeClass("authorize_main_block_half");
+//    }
 
     $scope.showHelp = function(){
         $scope.showAuthHelp = true;
-        $scope.showRightBlock();
     }
 
     $scope.puk_btn =function(){
-        //$scope.showPukBlock = true;
-        $scope.toggleSMS2 = false;
+        $scope.toggleSMS = false;
+        $scope.showPukBlock = true;
         $scope.showCodeProblemBlock = false;
         $scope.showCodeProblemLink = false;
     }
 
+    $scope.register_puk = function(){
+//        alert($scope.userPukCode.length)
+        if( $scope.userPukCode.length > 3 ){
+            $scope.showSuccessCreating = true;
+            $scope.toggleSMS2 = false;
+            $scope.show_regBtn = false;
+            $scope.showPassword = false;
+            $scope.showLogin = false;
+            $scope.showSocials = false;
+            $scope.showPukBlock = false;
+            setTimeout(function () {
+                $location.path("/success");
+            }, 1000)
+        }
+        else{
+            alert("Введиите PUK-код!")
+        }
+    }
+
     $scope.register = function(){
-        if($scope.userLogin.length < 6){
-            $scope.toggleLogin = true;
-            $scope.showRightBlock();
+        $scope.disableLogin = true;
+
+        if($scope.userLogin.length < 8){
+            $scope.showAuthAlertLogin = true;
         }
         else{
             if($scope.userPassword==""){
-                $scope.togglePassword = true;
-                $scope.showRightBlock();
+                $scope.showAuthAlertPassword = true;
             }
             else{
                 if($scope.toggleSMS2==true){
-                    if($scope.userSmsCode==""){
-                        $scope.toggleWrongCode = true;
+                    if ($scope.toggleSMS === true && $scope.userSmsCode == "" ){
+                        $scope.showAuthAlertWrongCode = true;
                         $scope.showCodeProblemLink = true;
-                        $scope.showRightBlock();
                     }
-                    else{
-                        $scope.showSuccessCreating=true;
-                        $scope.toggleSMS2=false;
+                     else {
+                        $scope.showSuccessCreating = true;
+                        $scope.toggleSMS2 = false;
                         $scope.show_regBtn = false;
-                        //alert(1231)
-                        setTimeout(function(){
-                            $location.path( "/success" );
-                        }, 2000)
+                        $scope.showPassword = false;
+                        $scope.showLogin = false;
+                        $scope.showSocials = false;
+                        $scope.showPukBlock = false;
+                        setTimeout(function () {
+                            $location.path("/success");
+                        }, 1000)
                     }
                 }
                 else{
-                    $scope.toggleSMS = true;
-                    $scope.show_password = false;
+//                    $scope.toggleSMS = true;
+//                    $scope.showPassword = false;
+//                    $scope.show_regBtn = false;
+                    //alert(7)
+                    $scope.showSuccessCreating = true;
+                    $scope.toggleSMS2 = false;
                     $scope.show_regBtn = false;
-                    $("#user-login").attr("disabled", "disabled");
-                    //alert(343)
+                    $scope.showPassword = false;
+                    $scope.showLogin = false;
+                    $scope.showSocials = false;
+                    $scope.showPukBlock = false;
+                    setTimeout(function () {
+                        $location.path("/success");
+                    }, 1000)
                 }
 
             }
         }
 
+    }
+
+    $scope.getDisposablePassword = function(){
+        if( $scope.userLogin.length < 8 ){
+            $scope.showAuthAlertLogin = true;
+
+        }
+        else{
+            //alert("не введен логин!");
+            this.toggleSMS = true;
+            $scope.showDisposablePassword = false;
+            $scope.disableLogin = true;
+            $scope.showPassword = false;
+        }
     }
 
     $scope.get_code = function () {
@@ -138,6 +196,8 @@ ssoApp.controller('mainController', function($scope, $location) {
         alert("Выбрана помощь!");
     }
 });
+
+
 
 ssoApp.controller('registerController', function($scope, $location) {
     $scope.showSuccessMsg = false;

@@ -33,3 +33,15 @@
 #right-block-authorize{
     display: none;
 }
+
+.help_link, .skip-link {
+    border-bottom: 1px solid #229FFF;
+}
+.help_link:hover, .skip-link:hover{
+    border-bottom: 1px solid #575757;
+}
+.kyivstar .register-popup {
+    position: relative !important;
+    right: 0px !important;
+    top: 0px !important;
+}
