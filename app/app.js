@@ -20,10 +20,10 @@ ssoApp.config(function($routeProvider) {
             controller  : 'mainController'
         })
 
-        /*.when('/error', {
-         templateUrl : 'pages/register/error.html',
-         controller  : 'aboutController'
-         })*/
+        .when('/success', {
+         templateUrl : 'pages/auth/success.html',
+         controller  : 'mainController'
+         })
 
         .when('/personal', {
             templateUrl : 'pages/register/personal.html',
@@ -61,7 +61,7 @@ ssoApp.controller('mainController', function($scope) {
         $scope.show_regBtn = true;
         $scope.showCodeProblemLink = false;
         $scope.showCodeProblemBlock = false;
-        $("#user-login").attr("placeholder", this.userLogin)
+        $("#user-login").attr("placeholder", '')
         $("#user-password").attr("placeholder", this.userPassword)
         $("#user-login").prop('disabled', false);
     };
@@ -82,13 +82,15 @@ ssoApp.controller('mainController', function($scope) {
     }
 
     $scope.puk_btn =function(){
-        $scope.showPukBlock = true;
+        //$scope.showPukBlock = true;
         $scope.toggleSMS2 = false;
         $scope.showCodeProblemBlock = false;
         $scope.showCodeProblemLink = false;
     }
 
     $scope.register = function(){
+        //$scope.showPukBlock = false;
+
         if($scope.userLogin.length < 6){
             $scope.toggleLogin = true;
             $scope.showRightBlock();

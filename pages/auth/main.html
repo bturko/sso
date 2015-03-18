@@ -14,7 +14,7 @@
                 </div>
                 <div ng-show="toggleSMS"><p class="text-left">З міркувань безпеки ми відправимо безкоштовне SMS-повідомлення із кодом
                     підтвердження на вказанний мобільний телефон</p>
-                    <input class="connect" type="button" value="Отримати код" ng-click="get_code()" />
+                    <input class="connect m-top-15 m-bottom-20" type="button" value="Отримати код" ng-click="get_code()" />
                 </div>
                 <div ng-show="toggleSMS2">
                     <p class="text-left">На ваш номер телефону {{userLogin}} було надiслано повiдомлення iз кодом пiдтвердження. Введiть отриманий код у поле нижче.</p>
@@ -30,7 +30,10 @@
                         <div class="input-img locked-img"></div>
                     </div>
                 </div>
-                <a class="help_link pull-right" href="#">Отримати одноразовий пароль</a>
+                <div class="block text-right">
+                    <a class="help_link" href="#">Отримати одноразовий пароль</a>
+                </div>
+
                 <div class="input-wrapper">
                     <input type="password" name="user-password" id="user-password" class="input-locked" ng-model="userPassword"
                            ng-show="show_password" placeholder="Ваш пароль"/>
@@ -104,7 +107,7 @@
                 <a class="popup_close" ng-click="showAuthHelp = false; hideRightBlock()">X</a>
             </div>
             <div class="register-popup popup-alert info box on" ng-show="togglePassword" ng-animate="'box'">
-                <h5></h5>
+                <h5>Помилка!</h5>
                 <p>
                     Не вказано пароль!
                 </p>
