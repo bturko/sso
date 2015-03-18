@@ -20,10 +20,10 @@ ssoApp.config(function($routeProvider) {
             controller  : 'mainController'
         })
 
-        .when('/error', {
-            templateUrl : 'pages/register/error.html',
-            controller  : 'aboutController'
-        })
+        /*.when('/error', {
+         templateUrl : 'pages/register/error.html',
+         controller  : 'aboutController'
+         })*/
 
         .when('/personal', {
             templateUrl : 'pages/register/personal.html',
@@ -33,7 +33,7 @@ ssoApp.config(function($routeProvider) {
 });
 
 ssoApp.controller('mainController', function($scope) {
-    $scope.toggleHelp = false;
+    $scope.showAuthHelp = false;
     $scope.toggleLogin = false;
     $scope.toggleExist = false;
     $scope.toggleSMS = false;
@@ -64,6 +64,12 @@ ssoApp.controller('mainController', function($scope) {
         $("#user-password").attr("placeholder", this.userPassword)
         $("#user-login").prop('disabled', false);
     };
+
+    $scope.showHelp = function(){
+        $scope.showAuthHelp = true;
+        jQuery("#left-block-authorize").addClass("authorize_main_block_half").removeClass("authorize_main_block");
+        jQuery("#right-block-authorize").fadeIn();
+    }
 
     $scope.register = function(){
         if($scope.userLogin.length < 6){
@@ -124,22 +130,22 @@ ssoApp.controller('registerController', function($scope) {
     $scope.smsCodeIn = "";
 
     $scope.register_newUser = function(){
-       if($scope.regLogin!=""){
+        if($scope.regLogin!=""){
 
-           console.log($scope.regLogin.length)
-           if($scope.regLogin.length <10){
-               $("#reg-name").attr("placeholder", "Електронна пошта або номер мобильного")
-               $("#reg-name").removeClass("input-info").addClass("input-warning");
-               $scope.showWrongPhone = true;
-           }
-           else{
+            console.log($scope.regLogin.length)
+            if($scope.regLogin.length <10){
+                $("#reg-name").attr("placeholder", "Електронна пошта або номер мобильного")
+                $("#reg-name").removeClass("input-info").addClass("input-warning");
+                $scope.showWrongPhone = true;
+            }
+            else{
                 $scope.showSMSBlock1 = true;
-               $scope.showRegBtn = false;
-           }
+                $scope.showRegBtn = false;
+            }
         }
         else{
-           $scope.showWrongLogin = true;
-       }
+            $scope.showWrongLogin = true;
+        }
 
     }
     $scope.returnInput = function(){
