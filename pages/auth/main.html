@@ -8,52 +8,105 @@
 
             <img class="m-top-20 m-bottom-20" src="images/icon-register-user.png" alt="User"/>
             <form action="#" class="form_register_full m-auto text-center kyivstar-form form_internet">
-                <div class="input-wrapper">
-                    <input type="text" name="user-login" id="user-login" class="input-info" ng-model="userLogin" placeholder="Електронна пошта або номер мобiльного"/>
+                <div class="register-popup success info box on" ng-show="showSuccessCreating" ng-animate="'box'">
+                    <h5>Обліковій запис для {{userLogin}} успішно створено</h5>
+                    <p>На вказану Вами адресу електроної пошти було надіслано лист, який містить інструкції з активації. Після активаціі для входу на портал використовуйте адресу  електоної пошти та пароль.</p>
+                    <a class="popup_close" ng-click="showSuccessCreating = false; hideRightBlock()">X</a>
+                </div>
+
+                <div ng-show="showLogin" class="input-wrapper">
+                    <input type="text" name="user-login" id="user-login" class="input-info" ng-model="userLogin" ng-disabled="disableLogin" placeholder="Електронна пошта або номер мобiльного"/>
                     <div class="input-img info-img" ng-click="showHelp()"></div>
                 </div>
-                <div ng-show="toggleSMS"><p class="text-left">З міркувань безпеки ми відправимо безкоштовне SMS-повідомлення із кодом
-                    підтвердження на вказанний мобільний телефон</p>
-                    <input class="connect m-top-15 m-bottom-20" type="button" value="Отримати код" ng-click="get_code()" />
+                <div class="register-popup info popup info box on" ng-show="showAuthHelp" ng-animate="'box'">
+                    <h5>Довідка!</h5>
+                    <p>В якості логіна може використовуватися номер мобільного телефону або адрес електроної пошти</p>
+                    <a class="popup_close" ng-click="showAuthHelp = false; hideRightBlock()">X</a>
                 </div>
+                <div class="register-popup popup-alert info box on" ng-show="showAuthAlertLogin" ng-animate="'box'">
+                    <h5>Невірний формат логіна!</h5>
+                    <p>В якості логіна може використовуватися номер мобільного телефону або адрес електроної пошти</p>
+                    <a class="popup_close" ng-click="showAuthAlertLogin = false; hideRightBlock()">X</a>
+                </div>
+                <div class="register-popup popup-alert info box on" ng-show="toggleExist" ng-animate="'box'">
+                    <h5>Щось з телефоном не так!</h5>
+                    <p>Вибачте, але в нас вже є користувач з такою адресою електроної пошти. Якщо це Ви, перейдіть за посиланням для входу в ваш обліковий запис.
+                        <a href="#auth">Вхід</a>
+                    </p>
+                    <a class="popup_close" ng-click="toggleExist = false; hideRightBlock()">X</a>
+                </div>
+
+
+
+                <div ng-show="toggleSMS">
+                    <p class="text-left">З міркувань безпеки ми відправимо безкоштовне SMS-повідомлення із кодом підтвердження на вказанний мобільний телефон</p>
+                    <div class="submit-block text-center">
+                        <a id="reset_all" ng-click="resetAll();" class="help_link">Скасувати?</a>
+                        <input class="connect m-top-15 m-bottom-20" type="button" value="Отримати код" ng-click="get_code()" />
+                    </div>
+                    <div class="padding-30-top">
+                        <a id="reset_all" ng-click="showCodeProblemBlock = true" class="help_link pull-left">Виникли проблеми?</a>
+                    </div>
+                </div>
+
                 <div ng-show="toggleSMS2">
                     <p class="text-left">На ваш номер телефону {{userLogin}} було надiслано повiдомлення iз кодом пiдтвердження. Введiть отриманий код у поле нижче.</p>
                     <div class="input-wrapper">
                         <input type="password" name="user-sms-code" id="user-sms-code" class="input-locked" ng-model="userSmsCode" placeholder="Код пiдтвердження з СМС-повiдомлення">
                         <div class="input-img locked-img"></div>
+                        <div class="register-popup popup-alert info box on" ng-show="showAuthAlertWrongCode" ng-animate="'box'">
+                            <h5>Невiрний код пiдтвердження!</h5>
+                            <p>Спробуйте ще раз. Кiлькiсть спроб обмежена! <a href="#auth">Вхід</a></p>
+                            <a class="popup_close" ng-click="showAuthAlertWrongCode = false; hideRightBlock()">X</a>
+                        </div>
+                    </div>
+                    <div class="submit-block text-center">
+                        <a id="reset_all" ng-click="resetAll();" class="help_link">Скасувати?</a>
+                        <input class="connect m-top-15 m-bottom-20" type="button" value="Вхiд" ng-click="register()" />
                     </div>
                 </div>
+
                 <div ng-show="showPukBlock">
                     <p class="text-left">Iндивiдуальнi PUK1\PUK2-код до SIM-картки зазначенi на пластиковому кардхолдерi, що мiститься на стартовому пакетi</p>
                     <div class="input-wrapper">
                         <input type="password" name="user-puk-code" id="user-puk-code" class="input-locked" ng-model="userPukCode" placeholder="PUK2-код вашоi SIM-картки">
                         <div class="input-img locked-img"></div>
                     </div>
-                </div>
-                <div class="block text-right" ng-show="showDisposablePassword">
-                    <a class="help_link" ng-click="getDisposablePassword()">Отримати одноразовий пароль</a>
+                    <div class="submit-block text-center">
+                        <a id="reset_all" ng-click="resetAll();" class="help_link">Скасувати?</a>
+                        <input class="connect m-top-15 m-bottom-20" type="button" value="Вхiд" ng-click="register()" />
+                    </div>
+                    <div class="padding-30-top">
+                        <a id="reset_all" ng-click="showCodeProblemBlock = true" class="help_link pull-left">Виникли проблеми?</a>
+                    </div>
                 </div>
 
-                <div class="input-wrapper">
+                <div ng-show="showPassword" class="input-wrapper">
+                    <div ng-show="showDisposablePassword" class="block text-right">
+                        <a class="help_link" ng-click="getDisposablePassword()">Отримати одноразовий пароль</a>
+                    </div>
                     <input type="password" name="user-password" id="user-password" class="input-locked" ng-model="userPassword"
-                           ng-show="show_password" placeholder="Ваш пароль"/>
+                            placeholder="Ваш пароль"/>
                     <div class="input-img locked-img"></div>
-                </div>
-                <div class="block m-bottom-10 clearfix">
-                    <input type="checkbox" name="checkbox6" id="checkbox6"/>
-                    <label class="text-left" for="checkbox6">Запам'ятати мене</label>
+                    <div class="register-popup popup-alert info box on" ng-show="showAuthAlertPassword" ng-animate="'box'">
+                        <h5>Помилка!</h5>
+                        <p>Не вказано пароль!</p>
+                        <a class="popup_close" ng-click="showAuthAlertPassword = false; hideRightBlock()">X</a>
+                    </div>
+                    <div class="block m-bottom-10 clearfix">
+                        <input type="checkbox" name="checkbox6" id="checkbox6"/>
+                        <label class="text-left" for="checkbox6">Запам'ятати мене</label>
+                    </div>
+                    <div class="submit-block text-center">
+                        <a id="reset_all" ng-click="resetAll();" class="help_link">Скасувати?</a>
+                        <input id="reg_bt" class="connect" type="button" value="Зарееструватися" ng-click="register()" ng-show="show_regBtn" />
+                    </div>
                 </div>
 
-
-                <div class="submit-block text-center" ><!--ng-controller="mainController"-->
-                    <a id="reset_all" ng-click="resetAll();" class="help_link">Скасувати?</a>
-                    <input id="reg_bt" class="connect" type="button" value="Зарееструватися" ng-click="register()" ng-show="show_regBtn" />
-                </div>
-
-                <div class="submit-block text-center" ng-show="showCodeProblemLink">
-                    <br>
-                    <a class="help_link clearfix pull-left" ng-click="showCodeProblemBlock = true">Виникли проблеми з кодом?</a>
-                </div>
+                <!--<div class="submit-block text-center" ng-show="showCodeProblemLink">-->
+                    <!--<br>-->
+                    <!--<a class="help_link clearfix pull-left" ng-click="showCodeProblemBlock = true">Виникли проблеми з кодом?</a>-->
+                <!--</div>-->
             </form>
 
             <div ng-show="showCodeProblemBlock">
@@ -75,55 +128,6 @@
                     </div>
 
                 </form>
-
-
-                <div class="register-popup info popup info box on" ng-show="showAuthHelp" ng-animate="'box'">
-                    <h5>Довідка!</h5>
-                    <p>
-                        В якості логіна може використовуватися номер мобільного телефону або адрес електроної пошти
-                    </p>
-                    <a class="popup_close" ng-click="showAuthHelp = false; hideRightBlock()">X</a>
-                </div>
-                <div class="register-popup popup-alert info box on" ng-show="togglePassword" ng-animate="'box'">
-                    <h5>Помилка!</h5>
-                    <p>
-                        Не вказано пароль!
-                    </p>
-                    <a class="popup_close" ng-click="togglePassword = false; hideRightBlock()">X</a>
-                </div>
-                <div class="register-popup popup-alert info box on" ng-show="toggleLogin" ng-animate="'box'">
-                    <h5>Невірний формат логіна!</h5>
-                    <p>
-                        В якості логіна може використовуватися номер мобільного телефону або адрес електроної пошти
-                    </p>
-                    <a class="popup_close" ng-click="toggleLogin = false; hideRightBlock()">X</a>
-                </div>
-                <div class="register-popup popup-alert info box on" ng-show="toggleExist" ng-animate="'box'">
-                    <h5>Щось з телефоном не так!</h5>
-                    <p>
-                        Вибачте, але в нас вже є користувач з такою адресою електроної пошти. Якщо це Ви, перейдіть за посиланням для входу в ваш обліковий запис.
-                        <a href="#">Вхід</a>
-                    </p>
-                    <a class="popup_close" ng-click="toggleExist = false; hideRightBlock()">X</a>
-                </div>
-                <div class="register-popup popup-alert info box on" ng-show="toggleWrongCode" ng-animate="'box'">
-                    <h5>Невiрний код пiдтвердження!</h5>
-                    <p>
-                        Спробуйте ще раз. Кiлькiсть спроб обмежена!
-                        <a href="#">Вхід</a>
-                    </p>
-                    <a class="popup_close" ng-click="toggleWrongCode = false; hideRightBlock()">X</a>
-                </div>
-                <div class="register-popup success info box on" ng-show="showSuccessCreating" ng-animate="'box'">
-                    <h5>Обліковій запис для {{userLogin}} успішно створено</h5>
-                    <p>
-                        На вказану Вами адресу електроної пошти було надіслано лист, який містить інструкції з активації. Після активаціі для входу на портал використовуйте адресу  електоної пошти та пароль.
-                    </p>
-                    <a class="popup_close" ng-click="showSuccessCreating = false; hideRightBlock()">X</a>
-                </div>
-
-
-
 
             </div>
 

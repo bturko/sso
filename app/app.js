@@ -33,15 +33,17 @@ ssoApp.config(function($routeProvider) {
 });
 
 ssoApp.controller('authController', function($scope, $location) {
+    $scope.disableLogin = false;
     $scope.showAuthHelp = false;
-    $scope.toggleLogin = false;
+    $scope.showAuthAlertLogin = false;
     $scope.toggleExist = false;
     $scope.toggleSMS = false;
     $scope.toggleSMS2 = false;
-    $scope.togglePassword = false;
-    $scope.show_password = true;
+    $scope.showAuthAlertPassword = false;
+    $scope.showPassword = true;
     $scope.show_regBtn = true;
-    $scope.toggleWrongCode = false;
+    $scope.showLogin = true;
+    $scope.showAuthAlertWrongCode = false;
     $scope.showCodeProblemLink = false;
     $scope.showCodeProblemBlock = false;
     $scope.showSuccessCreating = false;
@@ -59,13 +61,21 @@ ssoApp.controller('authController', function($scope, $location) {
         this.toggleSMS = false;
         this.toggleSMS2 = false;
         $scope.showDisposablePassword = true;
-        $scope.show_password = true;
+        $scope.showPassword = true;
         $scope.show_regBtn = true;
         $scope.showCodeProblemLink = false;
         $scope.showCodeProblemBlock = false;
-        $("#user-login").attr("placeholder", '')
-        $("#user-password").attr("placeholder", this.userPassword)
-        $("#user-login").prop('disabled', false);
+        $scope.showPukBlock = false;
+
+        $scope.showAuthHelp = false;
+        $scope.showAuthAlertPassword = false;
+        $scope.showAuthAlertLogin = false;
+        $scope.showAuthAlertWrongCode = false;
+
+        $scope.disableLogin = false;
+
+        $("#user-login").attr("placeholder", 'Електронна пошта або номер мобiльного')
+        $("#user-password").attr("placeholder", 'Ваш пароль');
     };
 
 //    $scope.showRightBlock = function(){
@@ -84,25 +94,29 @@ ssoApp.controller('authController', function($scope, $location) {
     }
 
     $scope.puk_btn =function(){
-        $scope.toggleSMS2 = false;
+        //alert(33)
+        $scope.toggleSMS = false;
+        $scope.showPukBlock = true;
         $scope.showCodeProblemBlock = false;
         $scope.showCodeProblemLink = false;
     }
 
     $scope.register = function(){
+        $scope.disableLogin = true;
+
         if($scope.userLogin.length < 6){
-            $scope.toggleLogin = true;
+            $scope.showAuthAlertLogin = true;
 //            $scope.showRightBlock();
         }
         else{
             if($scope.userPassword==""){
-                $scope.togglePassword = true;
+                $scope.showAuthAlertPassword = true;
 //                $scope.showRightBlock();
             }
             else{
                 if($scope.toggleSMS2==true){
                     if($scope.userSmsCode==""){
-                        $scope.toggleWrongCode = true;
+                        $scope.showAuthAlertWrongCode = true;
                         $scope.showCodeProblemLink = true;
 //                        $scope.showRightBlock();
                     }
@@ -110,6 +124,9 @@ ssoApp.controller('authController', function($scope, $location) {
                         $scope.showSuccessCreating=true;
                         $scope.toggleSMS2=false;
                         $scope.show_regBtn = false;
+                        $scope.showPassword = false;
+                        $scope.showLogin = false;
+                        $scope.showSocials = false;
                         setTimeout(function(){
                             $location.path( "/success" );
                         }, 1000)
@@ -117,9 +134,9 @@ ssoApp.controller('authController', function($scope, $location) {
                 }
                 else{
                     $scope.toggleSMS = true;
-                    $scope.show_password = false;
+                    $scope.showPassword = false;
                     $scope.show_regBtn = false;
-                    $("#user-login").attr("disabled", "disabled");
+                    //$("#user-login").attr("disabled", "disabled");
                 }
 
             }
@@ -131,6 +148,8 @@ ssoApp.controller('authController', function($scope, $location) {
         if( $scope.userLogin != '' ){
             this.toggleSMS = true;
             $scope.showDisposablePassword = false;
+            $scope.disableLogin = true;
+            $scope.showPassword = false;
         }
         else{
             alert("не введен логин!");
