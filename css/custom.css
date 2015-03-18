@@ -21,3 +21,15 @@
 
 .box-hide-setup { opacity:1; height: 0; }
 .box-hide-setup.box-hide-start { opacity:0; height: 200px; }
+
+#reg_bt{
+    -webkit-transition:all linear 0s;
+    -moz-transition:all linear 0s;
+    -ms-transition:all linear 0s;
+    -o-transition:all linear 0s;
+    transition:all linear 0s;
+}
+
+#right-block-authorize{
+    display: none;
+}

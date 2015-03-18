@@ -45,6 +45,7 @@ ssoApp.controller('mainController', function($scope) {
     $scope.showCodeProblemLink = false;
     $scope.showCodeProblemBlock = false;
     $scope.showSuccessCreating = false;
+    $scope.showPukBlock = false;
 
     $scope.userLogin = '+380';
     $scope.userPassword = "";
@@ -65,25 +66,44 @@ ssoApp.controller('mainController', function($scope) {
         $("#user-login").prop('disabled', false);
     };
 
+    $scope.showRightBlock = function(){
+        jQuery("#left-block-authorize").addClass("authorize_main_block_half").removeClass("authorize_main_block");
+        jQuery("#right-block-authorize").css("display", "table-cell");
+    }
+
+    $scope.hideRightBlock = function(){
+        jQuery("#right-block-authorize").fadeOut();
+        jQuery("#left-block-authorize").addClass("authorize_main_block").removeClass("authorize_main_block_half");
+    }
+
     $scope.showHelp = function(){
         $scope.showAuthHelp = true;
-        jQuery("#left-block-authorize").addClass("authorize_main_block_half").removeClass("authorize_main_block");
-        jQuery("#right-block-authorize").fadeIn();
+        $scope.showRightBlock();
+    }
+
+    $scope.puk_btn =function(){
+        $scope.showPukBlock = true;
+        $scope.toggleSMS2 = false;
+        $scope.showCodeProblemBlock = false;
+        $scope.showCodeProblemLink = false;
     }
 
     $scope.register = function(){
         if($scope.userLogin.length < 6){
             $scope.toggleLogin = true;
+            $scope.showRightBlock();
         }
         else{
             if($scope.userPassword==""){
                 $scope.togglePassword = true;
+                $scope.showRightBlock();
             }
             else{
                 if($scope.toggleSMS2==true){
                     if($scope.userSmsCode==""){
                         $scope.toggleWrongCode = true;
                         $scope.showCodeProblemLink = true;
+                        $scope.showRightBlock();
                     }
                     else{
                         $scope.showSuccessCreating=true;
