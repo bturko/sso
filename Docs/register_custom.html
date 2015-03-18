@@ -334,7 +334,7 @@
 <div class="authentication_wrap">
     <div class="block-white-wrap relative">
         <div class="padding-60">
-            <h1 class="">Рєєстрація</h1>
+            <h1 id="tooltip-new" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Рєєстрація</h1>
 
             <!--<div class="register-popup success">-->
                 <!--<h5>Обліковій запис для Vlasislav.Tserman@kyivsar.net успішно створено</h5>-->
@@ -837,6 +837,7 @@
 
 
 <script type="text/javascript" src="../vendor/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../vendor/bootstrap.js"></script>
 <script>
     $.noConflict();
     jQuery(document).ready(function ($) {
@@ -845,6 +846,8 @@
             e.preventDefault();
 
         });
+        jQuery('#tooltip-new').popover("toggle");
+
     });
 </script>
 </body>

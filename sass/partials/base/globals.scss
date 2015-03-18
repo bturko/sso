@@ -173,6 +173,7 @@ body,
     outline: none;
     position: relative;
   }
+
   input::-webkit-input-placeholder {color:#3b4952 !important;opacity: 1;transition: all 0.3s ease;}
   input::-moz-placeholder          {color:#3b4952 !important;opacity: 1;transition: all 0.3s ease;}/* Firefox 19+ */
   input:-moz-placeholder           {color:#3b4952 !important;opacity: 1;transition: all 0.3s ease;}/* Firefox 18- */
@@ -448,7 +449,6 @@ body,
   }
 
 }
-
 .kyivstar .table
 {
   margin: 0;
