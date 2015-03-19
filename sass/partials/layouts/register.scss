@@ -570,3 +570,26 @@
   border-left-color: #ffffff;
   bottom: -10px;
 }
+
+
+.fb:hover
+{
+  .iconks-social-fb-big
+  {
+    @extend .iconks-social-fb-big-white !optional;
+  }
+}
+.tw:hover
+{
+  .iconks-social-tw-big
+  {
+    @extend .iconks-social-tw-big-white !optional;
+  }
+}
+.vk:hover
+{
+  .iconks-social-vk-big
+  {
+    @extend .iconks-social-vk-big-white !optional;
+  }
+}
