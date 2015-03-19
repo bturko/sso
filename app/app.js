@@ -92,7 +92,8 @@ ssoApp.controller('authController', function($scope, $location) {
 //    }
 
     $scope.showHelp = function(){
-        $scope.showAuthHelp = true;
+        //$scope.showAuthHelp = true;
+        $scope.showLoginHelpPopover = true;
     }
 
     $scope.puk_btn =function(){
@@ -196,8 +197,9 @@ ssoApp.controller('authController', function($scope, $location) {
         alert("Выбрана помощь!"); //TODO: remove?
     }
 
-    $scope.dynamicPopover = 'Ошибка!';
-    $scope.dynamicPopoverTitle = 'Пароль неверный';
+    $scope.showLoginHelpPopover = false;
+    $scope.popoverHelpTitle = 'Довідка!';
+    $scope.popoverHelpDescr = 'В якості логіна може використовуватися номер мобільного телефону або адрес електроної пошти';
 });
 
 
@@ -215,6 +217,8 @@ ssoApp.controller('registerController', function($scope, $location) {
 
     $scope.regLogin = "Електронна пошта або номер мобильного";
     $scope.smsCodeIn = "";
+
+    $scope.pattern = true;
 
     $scope.register_newUser = function(){
         if($scope.regLogin!=""){
@@ -272,7 +276,6 @@ ssoApp.controller('registerController', function($scope, $location) {
             if($scope.showPukBlock===true) $location.path( "/personal" );
         }
         else{
-            //alert(34)
             $location.path( "/personal" );
         }
     }
@@ -283,4 +286,36 @@ ssoApp.controller('registerController', function($scope, $location) {
         $scope.showHelpBlock = false;
     }
 
+});
+
+//directive('popover', function () {
+//    return {
+//        restrict: 'A',
+//        scope: {
+//            shown: '='
+//        },
+//        link: function(scope, element) {
+//            scope.$watch('shown', function(shown) {
+//                if (shown) {
+//                    element.popover('show');
+//                } else {
+//                    element.popover('hide');
+//                }
+//            });
+//        }
+//    };
+//});
+
+jQuery('body').on('click', function (e) {
+    //alert(3)
+    //console.log(jQuery(e.target).hasClass("input-img"))
+    /* if (jQuery(e.target)).data('toggle') !== 'popover'
+        && jQuery(e.target).parents('[data-toggle="popover"]').length === 0
+        && jQuery(e.target).parents('.popover.in').length === 0) {
+        //$('[data-toggle="popover"]').popover('hide');
+        jQuery(".popover").fadeOut(300);
+    }*/
+    if(!jQuery(e.target).hasClass("input-img")){
+        jQuery(".popover").fadeOut(300);
+    }
 });

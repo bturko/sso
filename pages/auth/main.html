@@ -5,18 +5,27 @@
         <div class="authorize_main_block padding-60" id="left-block-authorize">
 
             <h1>Аутентифікація</h1>
-            <button popover="{{dynamicPopover}}" popover-title="{{dynamicPopoverTitle}}" class="btn btn-default">Dynamic Popover</button>
 
             <img class="m-top-20 m-bottom-20" src="images/icon-register-user.png" alt="User"/>
-            <form action="#" class="form_register_full m-auto text-center kyivstar-form form_internet">
+            <form action="#" class="form_register_full m-auto text-center kyivstar-form form_internet" autocomplete="off">
                 <div class="register-popup success info box on" ng-show="showSuccessCreating" ng-animate="'box'">
                     <h5>Обліковій запис для {{userLogin}} успішно створено</h5>
                     <p>На вказану Вами адресу електроної пошти було надіслано лист, який містить інструкції з активації. Після активаціі для входу на портал використовуйте адресу  електоної пошти та пароль.</p>
                     <a class="popup_close" ng-click="showSuccessCreating = false; hideRightBlock()">X</a>
+
                 </div>
 
                 <div ng-show="showLogin" class="input-wrapper">
-                    <input type="text" name="user-login" id="user-login" class="input-info" ng-model="userLogin" ng-disabled="disableLogin" placeholder="Електронна пошта або номер мобiльного"/>
+                    <input type="text" name="user-login" id="user-login" class="input-info" ng-model="userLogin" ng-disabled="disableLogin" placeholder="Електронна пошта або номер мобiльного" popover-placement="bottom" ng-click="showLoginHelpPopover = false" />
+
+                    <div id="LoginHelpPopover" ng-show="showLoginHelpPopover" style=" top: 38px;left: 102px; display: block;" popover-popup="" title="{{popoverHelpTitle}}" content="{{popoverHelpDescr}}" placement="bottom" animation="animation" is-open="isOpen" class="popover bottom fade in" ng-class="{ in: isOpen(), fade: animation() }">
+                        <!--<div class="arrow"></div>-->
+                        <!--<div class="popover-inner">-->
+                            <!--<h3 class="popover-title ng-binding" ng-bind="title" ng-show="title">{{popoverHelpTitle}}11</h3>-->
+                            <!--<div class="popover-content ng-binding" ng-bind="content">{{popoverHelpDescr}}22</div>-->
+                        <!--</div>-->
+                    </div>
+
                     <div class="input-img info-img" ng-click="showHelp()"></div>
                 </div>
                 <div class="register-popup info popup info box on" ng-show="showAuthHelp" ng-animate="'box'">

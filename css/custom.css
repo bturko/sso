@@ -45,3 +45,9 @@
     right: 0px !important;
     top: 0px !important;
 }
+
+.popover{
+    top: 38px;
+    left: 102px;
+    /*display: block;*/
+}
