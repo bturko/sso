@@ -41,8 +41,10 @@
                     </div>
                 <div ng-show="showPukBlock">
                     <label class="text-left">Iндивiдуальнi PUK1\PUK2-код до SIM-картки зазначенi на пластиковому кардхолдерi, що мiститься на стартовому пакетi</label>
-                    <input type="text" name="name" id="name8" class="input-locked"
-                           placeholder="PUK2-код вашоi SIM-картки" />
+                    <div class="input-wrapper">
+                        <input type="text" name="name" id="name8" class="input-locked"
+                               placeholder="PUK2-код вашоi SIM-картки" />
+                    </div>
                     <input class="connect" type="button" value="Вхiд" ng-click="get_enter()" />
                 </div>
 
