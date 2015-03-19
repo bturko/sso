@@ -41,8 +41,10 @@
                     </div>
                 <div ng-show="showPukBlock">
                     <label class="text-left">Iндивiдуальнi PUK1\PUK2-код до SIM-картки зазначенi на пластиковому кардхолдерi, що мiститься на стартовому пакетi</label>
-                    <input type="text" name="name" id="name8" class="input-locked"
-                           placeholder="PUK2-код вашоi SIM-картки" />
+                    <div class="input-wrapper">
+                        <input type="text" name="name" id="name8" class="input-locked"
+                               placeholder="PUK2-код вашоi SIM-картки" />
+                    </div>
                     <input class="connect" type="button" value="Вхiд" ng-click="get_enter()" />
                 </div>
 
@@ -85,20 +87,15 @@
                 </form>
             </div>
 
-
-            <h4 class="m-top-25">Зв'язок с соціальними мережами</h4>
-
-            <p class="m-top-15">Ви можете зарєєструватися за допомогою облікових записів соціальніх мереж</p>
-
-            <div class="block">
-                <a class="social_link" href="#"><i class="iconks iconks-social-fb"></i>Facebook</a>
-                <a class="social_link" href="#"><i class="iconks iconks-social-goo"></i>Google</a>
-                <a class="social_link" href="#"><i class="iconks iconks-social-tw"></i>Twitter</a>
-                <a class="social_link" href="#"><i class="iconks iconks-social-vk"></i>Vkontakte</a>
-            </div>
-
-            <div class="block text-center m-top-20">
-                <a href="#">Вже зарєєстровані?</a>
+            <div class="m-auto text-center" ng-show="showSocials">
+                <h4 class="m-top-25">Зв'язок с соціальними мережами</h4>
+                <p>Ви можете зарєєструватися за допомогою облікових записів соціальніх мереж</p>
+                <a class="social_link fb" href="#" onClick="window.open('index.html', '_blank', 'Toolbar=0, Scrollbars=1, location=0, menubar=0, status=0, directories=0, Height=800');" ><i class="iconks iconks-social-fb-big"></i>Facebook</a>
+                <a class="social_link tw" href="#"><i class="iconks iconks-social-tw-big"></i>Twitter</a>
+                <a class="social_link vk" href="#"><i class="iconks iconks-social-vk-big"></i>Vkontakte</a>
+                <div class="block text-center m-top-20 clearfix">
+                    <a class="help_link" href="#registration" >Вже зарєєстровані?</a>
+                </div>
             </div>
 
         </div>
