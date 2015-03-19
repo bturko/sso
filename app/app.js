@@ -1,5 +1,5 @@
 // create the module and name it ssoApp
-var ssoApp = angular.module('ssoApp', ['ngRoute', 'ngAnimate']);
+var ssoApp = angular.module('ssoApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap']);
 
 // configure our routes
 ssoApp.config(function($routeProvider) {
@@ -193,8 +193,11 @@ ssoApp.controller('authController', function($scope, $location) {
     }
 
     $scope.helpWithCode = function(){
-        alert("Выбрана помощь!");
+        alert("Выбрана помощь!"); //TODO: remove?
     }
+
+    $scope.dynamicPopover = 'Ошибка!';
+    $scope.dynamicPopoverTitle = 'Пароль неверный';
 });
 
 
@@ -279,9 +282,5 @@ ssoApp.controller('registerController', function($scope, $location) {
         $scope.showSMSBlock2 = false;
         $scope.showHelpBlock = false;
     }
-
-});
-
-ssoApp.controller('contactController', function($scope) {
 
 });
