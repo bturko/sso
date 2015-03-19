@@ -16,6 +16,13 @@ Icon classes can be used entirely standalone. They are named after their origina
   height: 8px;
 }
 
+.iconks-register-user-small {
+  background-image: url(../images/sprite-all.png);
+  background-position: 0px -70px;
+  width: 20px;
+  height: 21px;
+}
+
 .iconks-social-fb {
   background-image: url(../images/sprite-all.png);
   background-position: 0px -8px;

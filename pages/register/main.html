@@ -2,7 +2,7 @@
 <div class="authentication_wrap kyivstar" data-ng-controller="registerController">
     <div class="block-white-wrap relative">
         <div class="padding-60">
-            <h1 class="text-center">Рєєстрація</h1>
+            <h1 id="tooltip-new" class="text-center" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Рєєстрація</h1>
 
             <div class="register-popup success" ng-show="showSuccessMsg">
                 <h5>Обліковій запис для {{regLogin}} успішно створено</h5>
@@ -16,7 +16,7 @@
             <form action="#" class="form_register_full m-top-25 text-center kyivstar-form">
                 <div class="input-wrapper">
                     <input type="text" name="name" id="reg-name"
-                           placeholder="+380671234567" ng-model="regLogin" ng-click="returnInput()" />
+                           placeholder="+380671234567" ng-model="regLogin" ng-click="returnInput()"/>
                     <div id="first-icon" class="input-img info-img" ng-click="showHelpPopup = !showHelpPopup;" ></div>
                 </div>
 
